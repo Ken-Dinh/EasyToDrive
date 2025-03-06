@@ -1,0 +1,155 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+table admin{
+  admin_id int(6) [pk, increment, not null]
+  login varchar(255) [not null]
+  password varchar(255) [not null]
+}
+
+table eleve{
+  eleve_id int(6) [pk, increment, not null]
+  "#autoecole_id" int(6) [not null]
+  login varchar(255) [not null]
+  password varchar(255) [not null]
+  naissance date [not null]
+  rue varchar(255) [not null]
+  cp int(5) [not null]
+  ville varchar(255) [not null]
+  date_inscription timestamp [not null]
+  npeh varchar(50) [not null]
+  note_etg char(5) [not null]
+  validation_etg boolean [not null]
+}
+
+table autoecole{
+  autoecole_id int(6) [pk, increment, not null]
+  nom varchar(100) [not null]
+}
+
+table avis{
+  avis_id int(6) [pk, increment, not null]
+  "#eleve_id" int(6) [not null]
+  contenu varchar(2000)
+  date_publication timestamp [not null]
+}
+
+table examen{
+  examen_id int(6) [pk, increment, not null]
+  date timestamp [not null]
+  score float(20) [not null]
+}
+
+table eleve_examen{
+  "#eleve_id" int(6) [pk, not null]
+  "#examen_id" int(6) [pk, not null]
+}
+
+table test{
+  test_id int(6) [pk, increment, not null]
+  "#examen_id" int(6) [not null]
+  theme varchar(100) [not null]
+  date timestamp [not null]
+  score float(20) [not null]
+}
+
+table simulation{
+  simulation_id int(6) [pk, increment, not null]
+  "#examen_id" int(6) [not null]
+  date timestamp [not null]
+  validation boolean [not null]
+}
+
+ref: eleve.eleve_id - eleve_examen."#eleve_id"
+ref: examen.examen_id - eleve_examen."#examen_id"
+ref: examen.examen_id - test."#examen_id"
+ref: eleve.eleve_id - avis."#eleve_id"
+ref: autoecole.autoecole_id - eleve."#autoecole_id"
+ref: examen.examen_id - simulation."#examen_id"
+
+---------------------------------------SQL EXPORTATION BELOW---------------------------------------
+
+table admin{
+  admin_id int(6) [pk, increment, not null]
+  login varchar(255) [not null]
+  password varchar(255) [not null]
+}
+
+table eleve{
+  eleve_id int(6) [pk, increment, not null]
+  autoecole_id int(6) [not null]
+  login varchar(255) [not null]
+  password varchar(255) [not null]
+  naissance date [not null]
+  rue varchar(255) [not null]
+  cp int(5) [not null]
+  ville varchar(255) [not null]
+  date_inscription timestamp [not null]
+  npeh varchar(50) [not null]
+  note_etg char(5) [not null]
+  validation_etg boolean [not null]
+}
+
+table autoecole{
+  autoecole_id int(6) [pk, increment, not null]
+  nom varchar(100) [not null]
+}
+
+table avis{
+  avis_id int(6) [pk, increment, not null]
+  eleve_id int(6) [not null]
+  contenu varchar(2000)
+  date_publication timestamp [not null]
+}
+
+table examen{
+  examen_id int(6) [pk, increment, not null]
+  date timestamp [not null]
+  score float(20) [not null]
+}
+
+table eleve_examen{
+  eleve_id int(6) [pk, not null]
+  examen_id int(6) [pk, not null]
+}
+
+table test{
+  test_id int(6) [pk, increment, not null]
+  examen_id int(6) [not null]
+  theme varchar(100) [not null]
+  date timestamp [not null]
+  score float(20) [not null]
+}
+
+table simulation{
+  simulation_id int(6) [pk, increment, not null]
+  date timestamp [not null]
+  validation boolean [not null]
+  examen_id int(6) [not null]
+}
+
+ref: eleve.eleve_id - eleve_examen.eleve_id
+ref: examen.examen_id - eleve_examen.examen_id
+ref: examen.examen_id - test.examen_id
+ref: eleve.eleve_id - avis.eleve_id
+ref: autoecole.autoecole_id - eleve.autoecole_id
+ref: examen.examen_id - simulation.examen_id
+
+---------------------------------------https://www.mocodo.net/---------------------------------------
+
+Admin: admin_id, login, password
+
+Elève: eleve_id, login, password, naissance, rue, cp, ville, date_inscription, npeh, note_etg, validation_etg
+APPARTENIR, 11 Elève, 0N Auto-Ecole
+Auto-Ecole: autoecole_id, nom
+
+PUBLIER, 0N Elève, 11 Avis
+Avis: avis_id, contenu
+
+PASSER, 0N Elève, 0N Examen
+Examen: examen_id, date, score
+CONTENIR, 1N Examen, 11 Test
+Test: test_id, theme, date, score
+
+VALIDER, 1N Examen, 11 Simulation
+Simulation: simulation_id, date, validation
