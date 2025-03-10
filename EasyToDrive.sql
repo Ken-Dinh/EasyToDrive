@@ -21,7 +21,8 @@ CREATE TABLE `eleve` (
 
 CREATE TABLE `autoecole` (
   `autoecole_id` int(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) NOT NULL
+  `nom` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
 );
 
 CREATE TABLE `avis` (
