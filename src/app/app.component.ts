@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TestService } from './service/test.service';
+import { EleveService } from './service/eleve.service';
 
 @Component({
   selector: 'app-root',
@@ -9,33 +9,37 @@ import { TestService } from './service/test.service';
 })
 export class AppComponent {
   title = 'EasyToDrive';
-  data_delete: string = 'There is no data';
-  data_get: string = 'There is no data';
-  data_post: string = 'There is no data';
-  data_put: string = 'There is no data';
-  data_option: string = 'There is no data';
+  data_eleve: string = "There is no data";
+  post_eleve = {
+    autoecole_id: 1,
+    login: "John Doe",
+    password: "123456",
+    naissance: "1990-01-01",
+    rue: "1 rue de la paix",
+    cp: "75000",
+    ville: "Paris",
+    date_inscription: "2021-01-01 00:00:00",
+    npeh: 20,
+    note_etg: 0,
+    validation_etg: false
+  }
 
-  constructor(private testService:TestService){}
+  constructor(private eleveService:EleveService){}
 
   ngOnInit(){
-    this.testService.getTest().subscribe((data:any)=>{
-      this.data_get = data.message;
-    });
-  
-    this.testService.postTest({id:1}).subscribe((data:any)=>{
-      this.data_post = data.message;
-    });
+    this.getEleve();
+    this.postEleve();
+  }
 
-    this.testService.putTest({id:1}).subscribe((data:any)=>{
-      this.data_put = data.message;
+  getEleve(){
+    this.eleveService.getEleve().subscribe((data:any)=>{
+      this.data_eleve = data.eleve[0].autoecole_id;
     });
+  }
 
-    this.testService.deleteTest({id:1}).subscribe((data:any)=>{
-      this.data_delete = data.message;
-    });
-
-    this.testService.optionTest().subscribe((data:any)=>{
-      this.data_option = data.message;
+  postEleve(){
+    this.eleveService.postEleve(this.post_eleve).subscribe((data:any)=>{
+      console.log(data.message);
     });
   }
 }
