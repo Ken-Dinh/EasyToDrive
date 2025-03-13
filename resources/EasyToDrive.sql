@@ -35,12 +35,13 @@ CREATE TABLE `avis` (
 CREATE TABLE `examen` (
   `examen_id` int(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `date` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-  `score` float(20) NOT NULL
+  `score` float(5) NOT NULL
 );
 
 CREATE TABLE `eleve_examen` (
   `eleve_id` int(6) NOT NULL,
   `examen_id` int(6) NOT NULL,
+  `note` float(5) NOT NULL,
   PRIMARY KEY (`eleve_id`, `examen_id`)
 );
 
@@ -49,7 +50,7 @@ CREATE TABLE `test` (
   `examen_id` int(6) NOT NULL,
   `theme` varchar(100) NOT NULL,
   `date` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-  `score` float(20) NOT NULL
+  `score` float(5) NOT NULL
 );
 
 CREATE TABLE `simulation` (

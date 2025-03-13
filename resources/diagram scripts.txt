@@ -38,12 +38,13 @@ table avis{
 table examen{
   examen_id int(6) [pk, increment, not null]
   date timestamp [not null]
-  score float(20) [not null]
+  score float(5) [not null]
 }
 
 table eleve_examen{
   "#eleve_id" int(6) [pk, not null]
   "#examen_id" int(6) [pk, not null]
+  note float(5) [not null]
 }
 
 table test{
@@ -51,7 +52,7 @@ table test{
   "#examen_id" int(6) [not null]
   theme varchar(100) [not null]
   date timestamp [not null]
-  score float(20) [not null]
+  score float(5) [not null]
 }
 
 table simulation{
@@ -107,12 +108,13 @@ table avis{
 table examen{
   examen_id int(6) [pk, increment, not null]
   date timestamp [not null]
-  score float(20) [not null]
+  score float(5) [not null]
 }
 
 table eleve_examen{
   eleve_id int(6) [pk, not null]
   examen_id int(6) [pk, not null]
+  note float(5) [not null]
 }
 
 table test{
@@ -120,7 +122,7 @@ table test{
   examen_id int(6) [not null]
   theme varchar(100) [not null]
   date timestamp [not null]
-  score float(20) [not null]
+  score float(5) [not null]
 }
 
 table simulation{
@@ -148,7 +150,7 @@ Auto-Ecole: autoecole_id, nom, password
 PUBLIER, 0N Elève, 11 Avis
 Avis: avis_id, contenu
 
-PASSER, 0N Elève, 0N Examen
+PASSER, 0N Elève, 0N Examen: note
 Examen: examen_id, date, score
 CONTENIR, 1N Examen, 11 Test
 Test: test_id, theme, date, score
