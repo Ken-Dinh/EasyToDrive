@@ -17,7 +17,7 @@ table eleve{
   cp int(5) [not null]
   ville varchar(255) [not null]
   date_inscription timestamp [not null]
-  npeh varchar(50) [not null]
+  neph varchar(50) [not null]
   note_etg char(5) [not null]
   validation_etg boolean [not null]
 }
@@ -86,7 +86,7 @@ table eleve{
   cp int(5) [not null]
   ville varchar(255) [not null]
   date_inscription timestamp [not null]
-  npeh varchar(50) [not null]
+  neph varchar(50) [not null]
   note_etg char(5) [not null]
   validation_etg boolean [not null]
 }
@@ -141,7 +141,7 @@ ref: examen.examen_id - simulation.examen_id
 
 Admin: admin_id, login, password
 
-Elève: eleve_id, login, password, naissance, rue, cp, ville, date_inscription, npeh, note_etg, validation_etg
+Elève: eleve_id, login, password, naissance, rue, cp, ville, date_inscription, neph, note_etg, validation_etg
 APPARTENIR, 11 Elève, 0N Auto-Ecole
 Auto-Ecole: autoecole_id, nom, password
 

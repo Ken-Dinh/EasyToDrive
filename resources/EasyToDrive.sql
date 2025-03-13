@@ -14,7 +14,7 @@ CREATE TABLE `eleve` (
   `cp` int(5) NOT NULL,
   `ville` varchar(255) NOT NULL,
   `date_inscription` timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL,
-  `npeh` varchar(50) NOT NULL,
+  `neph` varchar(50) NOT NULL,
   `note_etg` char(5) NOT NULL,
   `validation_etg` boolean NOT NULL
 );
