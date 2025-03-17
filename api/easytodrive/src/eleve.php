@@ -95,7 +95,7 @@
             getEleves();
             break;
         case "POST":
-            data = json_decode(file_get_contents("php://input"), true);
+            $data = json_decode(file_get_contents("php://input"), true);
             postEleve($data);
             break;
         case "PUT":
