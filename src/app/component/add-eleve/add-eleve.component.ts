@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Eleve } from '../../model/eleve';
+import { EleveService } from '../../service/eleve.service';
 
 @Component({
   selector: 'app-add-eleve',
@@ -10,7 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AddEleveComponent {
   addEleveForm!: FormGroup;
 
-  constructor() {}
+  constructor(private eleveService: EleveService) {}
   ngOnInit(): void {
     this.addEleveForm = new FormGroup({
       login: new FormControl(""),
@@ -38,6 +40,25 @@ export class AddEleveComponent {
     const etg = this.addEleveForm.get("etg")?.value;
     const valietg = this.addEleveForm.get("valietg")?.value;
     
+    const _eleve: Eleve = {
+      autoecole_id: undefined, // Liste déroulante
+      login: login,
+      password: password,
+      naissance: birthday,
+      rue: rue,
+      cp: cp,
+      ville: ville,
+      date_inscription: dateInscription,
+      neph: neph,
+      note_etg: etg,
+      validation_etg: valietg
+    }
+
+    console.log(_eleve);
+
+    this.eleveService.postEleve(_eleve).subscribe((data: any) => {
+      alert(data.message);
+    });
   }
 }
 
