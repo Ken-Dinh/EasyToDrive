@@ -3,14 +3,14 @@
 
 table admin{
   admin_id int(6) [pk, increment, not null]
-  login varchar(255) [not null]
+  login varchar(255) [not null, unique]
   password varchar(255) [not null]
 }
 
 table eleve{
   eleve_id int(6) [pk, increment, not null]
   "#autoecole_id" int(6) [not null]
-  login varchar(255) [not null]
+  login varchar(255) [not null, unique]
   password varchar(255) [not null]
   naissance date [not null]
   rue varchar(255) [not null]
@@ -24,7 +24,7 @@ table eleve{
 
 table autoecole{
   autoecole_id int(6) [pk, increment, not null]
-  nom varchar(100) [not null]
+  nom varchar(100) [not null, unique]
   password varchar(255) [not null]
 }
 
@@ -73,14 +73,14 @@ ref: examen.examen_id - simulation."#examen_id"
 
 table admin{
   admin_id int(6) [pk, increment, not null]
-  login varchar(255) [not null]
+  login varchar(255) [not null, unique]
   password varchar(255) [not null]
 }
 
 table eleve{
   eleve_id int(6) [pk, increment, not null]
   autoecole_id int(6) [not null]
-  login varchar(255) [not null]
+  login varchar(255) [not null, unique]
   password varchar(255) [not null]
   naissance date [not null]
   rue varchar(255) [not null]
@@ -94,7 +94,7 @@ table eleve{
 
 table autoecole{
   autoecole_id int(6) [pk, increment, not null]
-  nom varchar(100) [not null]
+  nom varchar(100) [not null, unique]
   password varchar(255) [not null]
 }
 

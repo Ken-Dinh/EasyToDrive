@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Eleve } from '../model/eleve';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,18 @@ export class EleveService {
   constructor(private http: HttpClient) { }
 
   getEleve() {
-    return this.http.get(this.apiUrl);
+    return this.http.get<Eleve[]>(this.apiUrl);
   }
 
-  postEleve(data: any) {
+  postEleve(data: Eleve) {
     return this.http.post(this.apiUrl, data);
   }
 
-  putEleve(data: any) {
+  putEleve(data: Eleve) {
     return this.http.put(this.apiUrl, data);
   }
 
-  deleteEleve(data: any) {
+  deleteEleve(data: Eleve) {
     return this.http.delete(this.apiUrl, { body: data });
   }
 }
