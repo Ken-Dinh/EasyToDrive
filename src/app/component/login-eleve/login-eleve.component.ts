@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { EleveService } from '../../service/eleve.service';
 
 @Component({
   selector: 'app-login-eleve',
@@ -10,13 +11,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class LoginEleveComponent implements OnInit {
   loginEleveForm!: FormGroup;
 
-  constructor() {}
+  constructor(private eleveService: EleveService) {}
+
+  getEleve() {
+    this.eleveService.getEleve().subscribe((data: any) => {
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
     this.loginEleveForm = new FormGroup({
       login: new FormControl(''),
       password: new FormControl('')
     });
+    this.getEleve();
   }
 
   login() {
