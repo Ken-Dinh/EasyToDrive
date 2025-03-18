@@ -24,7 +24,6 @@ export class LoginEleveComponent implements OnInit {
       login: new FormControl(''),
       password: new FormControl('')
     });
-    this.getEleve();
   }
 
   login() {
