@@ -13,6 +13,11 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { AddExamenComponent } from './component/add-examen/add-examen.component';
 import { AddTestComponent } from './component/add-test/add-test.component';
+import { AddSimulationComponent } from './component/add-simulation/add-simulation.component';
+import { PutEleveComponent } from './component/put-eleve/put-eleve.component';
+import { PutExamenComponent } from './component/put-examen/put-examen.component';
+import { PutSimulationComponent } from './component/put-simulation/put-simulation.component';
+import { PutTestComponent } from './component/put-test/put-test.component';
 
 
 @NgModule({
@@ -24,7 +29,12 @@ import { AddTestComponent } from './component/add-test/add-test.component';
     HeaderComponent,
     LoginEleveComponent,
     AddExamenComponent,
-    AddTestComponent
+    AddTestComponent,
+    AddSimulationComponent,
+    PutEleveComponent,
+    PutExamenComponent,
+    PutSimulationComponent,
+    PutTestComponent
   ],
   imports: [
     BrowserModule,

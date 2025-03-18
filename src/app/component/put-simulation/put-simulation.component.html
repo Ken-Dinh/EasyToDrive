@@ -1,0 +1,38 @@
+<div class="container mt-5">
+    <h2>Modifier une simulation</h2>
+  
+    <!-- Formulaire pour ajouter l'élève -->
+    <form [formGroup]="putSimulationForm" class="container mx-auto py-3">
+      
+        
+        
+          <div class="formGroup">
+            <label for="timestamp">Date de la simulation:</label>
+            <input
+              type="date"
+              id="timestamp"
+              formControlName="timestamp"
+              class="form-control"
+            />
+          
+        </div>
+  
+        
+        
+      
+        
+          <div class="formGroup">
+            <label for="valie">Validation Examen:</label>
+            <input
+              type="checkbox"
+              id="valie"
+              formControlName="valie"
+              class="form-check-input mx-3" 
+            />
+        
+      </div>
+  
+      <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putSimulation()">Valider</button>
+    </form>
+  </div>
+
