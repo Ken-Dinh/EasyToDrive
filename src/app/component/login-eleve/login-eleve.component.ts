@@ -22,26 +22,6 @@ export class LoginEleveComponent implements OnInit {
     });
   }
 
-  postEleve(data: any) {
-    let _password = data.password;
-    this.loginEleveService.postEleve(data).subscribe((data: any) => {
-      this.loginEleve = data.eleve;
-
-      if (this.loginEleve == undefined) {
-        alert("Nothing found in the database");
-        return;
-      }
-  
-      if (this.loginEleve.password != _password) {
-        alert("Password Incorrect");
-        return;
-      }
-
-      alert("Success");
-    });
-    
-  }
-
   login() {
     const _login = this.loginEleveForm.get('login')?.value;
     const _password = this.loginEleveForm.get('password')?.value;
@@ -54,6 +34,21 @@ export class LoginEleveComponent implements OnInit {
       alert("Login/Password is empty")
       return;
     }
-    this.postEleve(_loginEleve);
+
+    this.loginEleveService.postEleve(_loginEleve).subscribe((data: any) => {
+      this.loginEleve = data.eleve;
+
+      if (!this.loginEleve) {
+        alert("Nothing found in the database");
+        return;
+      }
+  
+      if (this.loginEleve.password != _password) {
+        alert("Password Incorrect");
+        return;
+      }
+
+      alert("Success");
+    });
   }
 }
