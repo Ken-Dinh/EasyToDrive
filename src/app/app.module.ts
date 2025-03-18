@@ -16,7 +16,7 @@ import { HeaderComponent } from './component/header/header.component';
   declarations: [
     AppComponent,
     AddEleveComponent,
-    LoginEleveComponent
+    LoginEleveComponent,
     CardComponent,
     FooterComponent,
     HeaderComponent
