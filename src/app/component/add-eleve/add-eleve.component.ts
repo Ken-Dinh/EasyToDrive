@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-eleve',
@@ -25,19 +25,20 @@ export class AddEleveComponent {
       valietg: new FormControl("")
     });
   }
-addEleve(){
-  const login = this.addEleveForm.get("login")?.value;
-  const password = this.addEleveForm.get("password")?.value;
-  const birthday = this.addEleveForm.get("birthday")?.value;
-  const rue = this.addEleveForm.get("rue")?.value;
-  const cp = this.addEleveForm.get("cp")?.value;
-  const ville = this.addEleveForm.get("ville")?.value;
-  const dateInscription = this.addEleveForm.get("dateInscription")?.value;
-  const neph = this.addEleveForm.get("neph")?.value;
-  const etg = this.addEleveForm.get("etg")?.value;
-  const valietg = this.addEleveForm.get("valietg")?.value;
-  
-}
+
+  addEleve(){
+    const login = this.addEleveForm.get("login")?.value;
+    const password = this.addEleveForm.get("password")?.value;
+    const birthday = this.addEleveForm.get("birthday")?.value;
+    const rue = this.addEleveForm.get("rue")?.value;
+    const cp = this.addEleveForm.get("cp")?.value;
+    const ville = this.addEleveForm.get("ville")?.value;
+    const dateInscription = this.addEleveForm.get("dateInscription")?.value;
+    const neph = this.addEleveForm.get("neph")?.value;
+    const etg = this.addEleveForm.get("etg")?.value;
+    const valietg = this.addEleveForm.get("valietg")?.value;
+    
+  }
 }
 
 
