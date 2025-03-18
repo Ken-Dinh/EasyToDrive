@@ -13,6 +13,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { HeaderComponent } from './component/header/header.component';
 import { AddExamenComponent } from './component/add-examen/add-examen.component';
 import { AddTestComponent } from './component/add-test/add-test.component';
+import { BouttonComponent } from './component/boutton/boutton.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AddTestComponent } from './component/add-test/add-test.component';
     HeaderComponent,
     LoginEleveComponent,
     AddExamenComponent,
-    AddTestComponent
+    AddTestComponent,
+    BouttonComponent
   ],
   imports: [
     BrowserModule,
