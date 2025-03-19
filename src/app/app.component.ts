@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EleveService } from './service/eleve.service';
+import { Eleve } from './model/eleve';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,16 @@ import { EleveService } from './service/eleve.service';
 export class AppComponent {
   title = 'EasyToDrive';
   data_eleve: string = "There is no data";
-  post_eleve = {
+  post_eleve: Eleve = {
     autoecole_id: 1,
     login: "John Doe",
     password: "123456",
     naissance: "1990-01-01",
     rue: "1 rue de la paix",
-    cp: "75000",
+    cp: 75000,
     ville: "Paris",
     date_inscription: "2021-01-01 00:00:00",
-    npeh: 20,
+    neph: "20",
     note_etg: 0,
     validation_etg: false
   }
@@ -28,7 +29,6 @@ export class AppComponent {
 
   ngOnInit(){
     this.getEleve();
-    this.postEleve();
   }
 
   getEleve(){

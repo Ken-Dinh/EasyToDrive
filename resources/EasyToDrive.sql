@@ -1,13 +1,13 @@
 CREATE TABLE `admin` (
   `admin_id` int(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `login` varchar(255) NOT NULL,
+  `login` varchar(255) UNIQUE NOT NULL,
   `password` varchar(255) NOT NULL
 );
 
 CREATE TABLE `eleve` (
   `eleve_id` int(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `autoecole_id` int(6) NOT NULL,
-  `login` varchar(255) NOT NULL,
+  `login` varchar(255) UNIQUE NOT NULL,
   `password` varchar(255) NOT NULL,
   `naissance` date NOT NULL,
   `rue` varchar(255) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `eleve` (
 
 CREATE TABLE `autoecole` (
   `autoecole_id` int(6) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `nom` varchar(100) NOT NULL,
+  `nom` varchar(100) UNIQUE NOT NULL,
   `password` varchar(255) NOT NULL
 );
 

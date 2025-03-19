@@ -16,8 +16,8 @@
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        $data = [];
-        $data["eleve"] = [];
+        $response = [];
+        $response["eleve"] = [];
         foreach ($result as $row) {
            $item = [
                 "eleve_id" => $row["eleve_id"],
@@ -33,10 +33,11 @@
                 "note_etg" => $row["note_etg"],
                 "validation_etg" => $row["validation_etg"]
             ];
-            array_push($data["eleve"], $item);
+            array_push($response["eleve"], $item);
         }
 
-        echo json_encode($data);
+        echo json_encode($response);
+        http_response_code(200);
     }
 
     function postEleve($data) {

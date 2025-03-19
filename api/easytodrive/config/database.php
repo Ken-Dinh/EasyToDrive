@@ -12,6 +12,7 @@
                 $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
                 echo "Connection failed: " . $e->getMessage();
+                http_response_code(400);
             }
             return $this->conn;
         }
