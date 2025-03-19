@@ -18,6 +18,8 @@ import { PutEleveComponent } from './component/put-eleve/put-eleve.component';
 import { PutExamenComponent } from './component/put-examen/put-examen.component';
 import { PutSimulationComponent } from './component/put-simulation/put-simulation.component';
 import { PutTestComponent } from './component/put-test/put-test.component';
+import { PageAccueilComponent } from './component/page-accueil/page-accueil.component';
+import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component';
 
 
 
@@ -35,7 +37,9 @@ import { PutTestComponent } from './component/put-test/put-test.component';
     PutEleveComponent,
     PutExamenComponent,
     PutSimulationComponent,
-    PutTestComponent
+    PutTestComponent,
+    PageAccueilComponent,
+    Voiture3DComponent
   ],
   imports: [
     BrowserModule,

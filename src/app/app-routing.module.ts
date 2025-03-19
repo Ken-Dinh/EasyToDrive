@@ -9,6 +9,9 @@ import { PutEleveComponent } from './component/put-eleve/put-eleve.component';
 import { PutExamenComponent } from './component/put-examen/put-examen.component';
 import { PutTestComponent } from './component/put-test/put-test.component';
 import { PutSimulationComponent } from './component/put-simulation/put-simulation.component';
+import { PageAccueilComponent } from './component/page-accueil/page-accueil.component';
+
+
 const routes: Routes = [
   {path: 'login-eleve', component: LoginEleveComponent},
   // Formulaire pour modifier et ajouter des trucs dans la base de donnée (pour l'admin)
@@ -19,8 +22,8 @@ const routes: Routes = [
   {path: "put-eleve", component: PutEleveComponent},
   {path: "put-examen", component: PutExamenComponent},
   {path: "put-test", component: PutTestComponent},
-  {path: "put-simulation", component: PutSimulationComponent}
-  // {path: "", component: Homepage}
+  {path: "put-simulation", component: PutSimulationComponent},
+  {path: "", component: PageAccueilComponent}
 ];
 
 @NgModule({
