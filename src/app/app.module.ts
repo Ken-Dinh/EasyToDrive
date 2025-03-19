@@ -18,7 +18,7 @@ import { PutEleveComponent } from './component/put-eleve/put-eleve.component';
 import { PutExamenComponent } from './component/put-examen/put-examen.component';
 import { PutSimulationComponent } from './component/put-simulation/put-simulation.component';
 import { PutTestComponent } from './component/put-test/put-test.component';
-import { BouttonComponent } from './component/boutton/boutton.component';
+
 
 
 @NgModule({
@@ -35,8 +35,7 @@ import { BouttonComponent } from './component/boutton/boutton.component';
     PutEleveComponent,
     PutExamenComponent,
     PutSimulationComponent,
-    PutTestComponent,
-    BouttonComponent
+    PutTestComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: "put-examen", component: PutExamenComponent},
   {path: "put-test", component: PutTestComponent},
   {path: "put-simulation", component: PutSimulationComponent}
+  // {path: "", component: Homepage}
 ];
 
 @NgModule({
