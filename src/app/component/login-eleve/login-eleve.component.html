@@ -1,6 +1,6 @@
 <form [formGroup]="loginEleveForm">
   <div class="formGroup">
-    <label for="email">Email</label>
+    <label for="Login">Login</label>
     <input type="text" class="form-control" id="login" formControlName="login">
   </div>
   <div class="formGroup">
@@ -8,4 +8,5 @@
     <input type="password" class="form-control" id="password" formControlName="password">
   </div>
   <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+  <p class="text-danger">{{ message }}</p>
 </form>

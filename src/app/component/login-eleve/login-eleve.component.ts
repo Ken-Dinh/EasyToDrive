@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LoginEleveService } from '../../service/login-eleve.service';
 import { Eleve } from '../../model/eleve';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-eleve',
@@ -11,11 +12,11 @@ import { Eleve } from '../../model/eleve';
 })
 export class LoginEleveComponent implements OnInit {
   loginEleveForm!: FormGroup;
-  loginEleve: Eleve = {};
+  message: string = '';
 
-  constructor(private loginEleveService: LoginEleveService) {}
+  constructor(private loginEleveService: LoginEleveService, private route: Router) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginEleveForm = new FormGroup({
       login: new FormControl(''),
       password: new FormControl('')
@@ -31,24 +32,18 @@ export class LoginEleveComponent implements OnInit {
     };
 
     if (_login == '' || _password == '') {
-      alert("Login/Password is empty")
+      this.message = "Champs vides.";
       return;
     }
 
-    this.loginEleveService.postEleve(_loginEleve).subscribe((data: any) => {
-      this.loginEleve = data.eleve;
-
-      if (!this.loginEleve) {
-        alert("Nothing found in the database");
-        return;
-      }
-  
-      if (this.loginEleve.password != _password) {
-        alert("Password Incorrect");
+    this.loginEleveService.postEleve(_loginEleve).subscribe((response: any) => {
+      if (!response.token) {
+        this.message = "Identifiants incorrectes.";
         return;
       }
 
-      alert("Success");
+      localStorage.setItem("token", response.token);
+      // this.route.navigate(["put-test"]); // page de l'étudiant
     });
   }
 }

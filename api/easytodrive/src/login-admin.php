@@ -10,9 +10,9 @@
     $conn = $db->connect();
     $request = $_SERVER['REQUEST_METHOD'];
 
-    function getLoginEleve($data) {
+    function getLoginAdmin($data) {
         global $conn;
-        $role = "eleve";
+        $role = "admin";
         $login = $data->login;
         $password = $data->password;
     
@@ -22,7 +22,7 @@
             return;
         }
     
-        $query = "SELECT * FROM eleve WHERE login = :login";
+        $query = "SELECT * FROM admin WHERE login = :login";
         $stmt = $conn->prepare($query);
         $stmt->bindParam(':login', $login);
         $stmt->execute();
@@ -51,7 +51,7 @@
     switch ($request) {
         case "POST":
             $data = json_decode(file_get_contents("php://input"));
-            getLoginEleve($data);
+            getLoginAdmin($data);
             break;
         default:
             echo json_encode(["message"=> "Invalid request method"]);

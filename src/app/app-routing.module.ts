@@ -10,19 +10,22 @@ import { PutExamenComponent } from './component/put-examen/put-examen.component'
 import { PutTestComponent } from './component/put-test/put-test.component';
 import { PutSimulationComponent } from './component/put-simulation/put-simulation.component';
 import { PageAccueilComponent } from './component/page-accueil/page-accueil.component';
+import { adminAuthGuard } from './guard/admin-auth.guard';
+import { LoginAdminComponent } from './component/login-admin/login-admin.component';
 
 
 const routes: Routes = [
   {path: 'login-eleve', component: LoginEleveComponent},
+  {path: 'login-admin', component: LoginAdminComponent},
   // Formulaire pour modifier et ajouter des trucs dans la base de donnée (pour l'admin)
-  {path: "add-eleve", component: AddEleveComponent},
-  {path: "add-examen", component: AddExamenComponent},
-  {path: "add-test", component: AddTestComponent},
-  {path: "add-simulation", component: AddSimulationComponent},
-  {path: "put-eleve", component: PutEleveComponent},
-  {path: "put-examen", component: PutExamenComponent},
-  {path: "put-test", component: PutTestComponent},
-  {path: "put-simulation", component: PutSimulationComponent},
+  {path: "add-eleve", component: AddEleveComponent, canActivate: [adminAuthGuard]},
+  {path: "add-examen", component: AddExamenComponent, canActivate: [adminAuthGuard]},
+  {path: "add-test", component: AddTestComponent, canActivate: [adminAuthGuard]},
+  {path: "add-simulation", component: AddSimulationComponent, canActivate: [adminAuthGuard]},
+  {path: "put-eleve", component: PutEleveComponent, canActivate: [adminAuthGuard]},
+  {path: "put-examen", component: PutExamenComponent, canActivate: [adminAuthGuard]},
+  {path: "put-test", component: PutTestComponent, canActivate: [adminAuthGuard]},
+  {path: "put-simulation", component: PutSimulationComponent, canActivate: [adminAuthGuard]},
   {path: "", component: PageAccueilComponent}
 ];
 
