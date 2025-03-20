@@ -114,7 +114,7 @@ CREATE TABLE `eleve` (
 --
 
 INSERT INTO `eleve` (`eleve_id`, `autoecole_id`, `login`, `password`, `naissance`, `rue`, `cp`, `ville`, `date_inscription`, `neph`, `note_etg`, `validation_etg`) VALUES
-(1, 1, 'Prénom.NOM', '123456789', '2005-01-12', '3 rue des rougets', 77580, 'crécy-la-chapelle', '2025-03-11 10:28:25', '18464', 'B', 0);
+(1, 1, 'Prénom.NOM', '$2y$10$nsMh3qqZNW.QsME0zLSl.Ov6z9eucRQjOzBdhFegOXRLOawmMfS06', '2005-01-12', '3 rue des rougets', 77580, 'crécy-la-chapelle', '2025-03-11 10:28:25', '18464', 'B', 0);
 
 -- --------------------------------------------------------
 
