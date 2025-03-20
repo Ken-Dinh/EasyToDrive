@@ -24,6 +24,7 @@ export class PageAccueilComponent implements OnInit {
     this.authguardValidationService.postValidateToken({token: token}).subscribe((response: any) => {
       if (!response.role) {
         localStorage.removeItem("token");
+        return;
       }
 
       this.route.navigate([response.role + "-dashboard"]);
