@@ -1,11 +1,13 @@
 <form [formGroup]="loginEleveForm">
-  <div class="formGroup">
+  <div class="formGroup pt-1 pb-1">
     <label for="email">Email</label>
     <input type="text" class="form-control" id="login" formControlName="login">
   </div>
-  <div class="formGroup">
+  <div class="formGroup pt-1 pb-1">
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" formControlName="password">
   </div>
-  <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+  <div class="pt-1 pb-1">
+    <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+  </div>
 </form>
