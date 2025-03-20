@@ -20,6 +20,7 @@ import { PutSimulationComponent } from './component/put-simulation/put-simulatio
 import { PutTestComponent } from './component/put-test/put-test.component';
 import { PageAccueilComponent } from './component/page-accueil/page-accueil.component';
 import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component';
+import { TableComponent } from './component/table/table.component';
 
 
 
@@ -39,7 +40,8 @@ import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component'
     PutSimulationComponent,
     PutTestComponent,
     PageAccueilComponent,
-    Voiture3DComponent
+    Voiture3DComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
