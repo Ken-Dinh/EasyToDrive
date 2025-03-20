@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: "login-admin", component: LoginAdminComponent},
   {path: "login-autoecole", component: LoginAutoecoleComponent},
   // Formulaire pour modifier et ajouter des trucs dans la base de donnée (pour l'admin)
-  {path: "admin-dashboard", component: AdminDashboardComponent},
+  {path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [adminAuthGuard]},
   {path: "add-eleve", component: AddEleveComponent, canActivate: [adminAuthGuard]},
   {path: "add-examen", component: AddExamenComponent, canActivate: [adminAuthGuard]},
   {path: "add-test", component: AddTestComponent, canActivate: [adminAuthGuard]},
