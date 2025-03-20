@@ -13,6 +13,7 @@
     function getLoginEleve($data) {
         global $conn;
         $login = $data->login;
+        $password = $data->password;
     
         if (empty($login)) {
             echo json_encode(["message" => "Missing data"]);
@@ -27,24 +28,38 @@
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
     
         $response = [];
-        if ($result) {
-            $response["eleve"] = [
-                "eleve_id" => $result["eleve_id"],
-                "autoecole_id" => $result["autoecole_id"],
-                "login" => $result["login"],
-                "password" => $result["password"],
-                "naissance" => $result["naissance"],
-                "rue" => $result["rue"],
-                "cp" => $result["cp"],
-                "ville" => $result["ville"],
-                "date_inscription" => $result["date_inscription"],
-                "neph" => $result["neph"],
-                "note_etg" => $result["note_etg"],
-                "validation_etg" => $result["validation_etg"]
-            ];
-        } else {
+        if (!$result) {
             $response["message"] = "No data found";
+            $response["token"] = "";
+            echo json_encode($response);
+            http_response_code(400);
+            return;
         }
+        
+        if (!password_verify($password, $result["password"])) {
+            $response["message"] = "Incorrect password";
+            $response["token"] = "";
+            echo json_encode($response);
+            http_response_code(400);
+            return;
+        }
+
+        $response["eleve"] = [
+            "eleve_id" => $result["eleve_id"],
+            "autoecole_id" => $result["autoecole_id"],
+            "login" => $result["login"],
+            "password" => $result["password"],
+            "naissance" => $result["naissance"],
+            "rue" => $result["rue"],
+            "cp" => $result["cp"],
+            "ville" => $result["ville"],
+            "date_inscription" => $result["date_inscription"],
+            "neph" => $result["neph"],
+            "note_etg" => $result["note_etg"],
+            "validation_etg" => $result["validation_etg"]
+        ];
+
+        $response["token"] = hash("sha256", $result["login"]);
         echo json_encode($response);
         http_response_code(200);
     }
