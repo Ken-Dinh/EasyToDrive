@@ -1,1 +1,12 @@
-<app-admin-dashboard></app-admin-dashboard>
+<header>
+    <app-header></app-header>
+</header>
+
+<body class="d-flex flex-column min-vh-100">
+    <main class="container flex-grow-1">
+        <router-outlet />
+    </main>
+    <footer class="mt-auto">
+        <app-footer></app-footer>
+    </footer>
+</body>
