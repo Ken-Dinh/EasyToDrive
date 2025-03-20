@@ -20,7 +20,7 @@
         public static function validateToken($token) {
             try {
                 $decoded = JWT::decode($token, new Key(self::$secret_key, self::$algorithm));
-                return $decoded;
+                return (array)$decoded;
             } catch (Exception $e) {
                 // echo json_encode(["message" => $e->getMessage()]);
                 return false;

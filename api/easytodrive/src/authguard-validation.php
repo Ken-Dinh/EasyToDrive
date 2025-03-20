@@ -17,7 +17,7 @@
             return;
         }
         
-        $data = (array) $decoded_token;
+        $data = $decoded_token;
         $response["role"] = $data["role"];
         echo json_encode($response);
         http_response_code(200);

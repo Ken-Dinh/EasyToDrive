@@ -23,6 +23,7 @@ import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component'
 import { LoginAdminComponent } from './component/login-admin/login-admin.component';
 import { TableComponent } from './component/table/table.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { LoginAutoecoleComponent } from './component/login-autoecole/login-autoecole.component';
 
 
 
@@ -45,7 +46,8 @@ import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashb
     Voiture3DComponent,
     LoginAdminComponent,
     TableComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    LoginAutoecoleComponent
   ],
   imports: [
     BrowserModule,

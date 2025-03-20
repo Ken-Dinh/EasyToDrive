@@ -12,12 +12,16 @@ import { PutSimulationComponent } from './component/put-simulation/put-simulatio
 import { PageAccueilComponent } from './component/page-accueil/page-accueil.component';
 import { adminAuthGuard } from './guard/admin-auth.guard';
 import { LoginAdminComponent } from './component/login-admin/login-admin.component';
+import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
+import { LoginAutoecoleComponent } from './component/login-autoecole/login-autoecole.component';
 
 
 const routes: Routes = [
-  {path: 'login-eleve', component: LoginEleveComponent},
-  {path: 'login-admin', component: LoginAdminComponent},
+  {path: "login-eleve", component: LoginEleveComponent},
+  {path: "login-admin", component: LoginAdminComponent},
+  {path: "login-autoecole", component: LoginAutoecoleComponent},
   // Formulaire pour modifier et ajouter des trucs dans la base de donnée (pour l'admin)
+  {path: "admin-dashboard", component: AdminDashboardComponent},
   {path: "add-eleve", component: AddEleveComponent, canActivate: [adminAuthGuard]},
   {path: "add-examen", component: AddExamenComponent, canActivate: [adminAuthGuard]},
   {path: "add-test", component: AddTestComponent, canActivate: [adminAuthGuard]},
