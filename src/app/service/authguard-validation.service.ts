@@ -10,7 +10,7 @@ export class AuthguardValidationService {
 
   constructor(private http: HttpClient) { }
 
-  postAdmin(data: any) {
+  postValidateToken(data: any) {
     return this.http.post<any>(this.apiUrl, data);
   }
 }

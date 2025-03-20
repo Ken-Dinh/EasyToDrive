@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthguardValidationService } from '../../service/authguard-validation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-accueil',
@@ -7,6 +9,24 @@ import { Component } from '@angular/core';
   styleUrl: './page-accueil.component.css',
   
 })
-export class PageAccueilComponent {
+export class PageAccueilComponent implements OnInit {
+  token: any = localStorage.getItem("token");
 
+  constructor(private authguardValidationService: AuthguardValidationService, private route: Router) {}
+  
+  ngOnInit(): void {
+    if (this.token) {
+      this.redirect(this.token);
+    }
+  }
+
+  redirect(token: any) {
+    this.authguardValidationService.postValidateToken({token: token}).subscribe((response: any) => {
+      if (!response.role) {
+        localStorage.removeItem("token");
+      }
+
+      this.route.navigate([response.role + "-dashboard"]);
+    })
+  }
 }

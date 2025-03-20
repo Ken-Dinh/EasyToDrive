@@ -13,7 +13,7 @@ export const adminAuthGuard: CanActivateFn = (route, state) => {
 
   const validation: AuthguardValidationService = inject(AuthguardValidationService);
   
-  return validation.postAdmin({token: token}).pipe(
+  return validation.postValidateToken({token: token}).pipe(
     map((data: any) => {
       return (data.role === role);
     })
