@@ -21,6 +21,8 @@ import { PutTestComponent } from './component/put-test/put-test.component';
 import { PageAccueilComponent } from './component/page-accueil/page-accueil.component';
 import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component';
 import { LoginAdminComponent } from './component/login-admin/login-admin.component';
+import { TableComponent } from './component/table/table.component';
+import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 
 
 
@@ -41,7 +43,9 @@ import { LoginAdminComponent } from './component/login-admin/login-admin.compone
     PutTestComponent,
     PageAccueilComponent,
     Voiture3DComponent,
-    LoginAdminComponent
+    LoginAdminComponent,
+    TableComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
