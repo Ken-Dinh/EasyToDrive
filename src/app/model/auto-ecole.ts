@@ -1,4 +1,4 @@
-import { IAutoEcole } from "./iauto-ecole";
+import { IAutoEcole } from "../interface/iauto-ecole";
 
 export class AutoEcole implements IAutoEcole {
     constructor(

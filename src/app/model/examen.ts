@@ -1,4 +1,4 @@
-import { IExamen } from "./iexamen";
+import { IExamen } from "../interface/iexamen";
 
 export class Examen implements IExamen {
     constructor(

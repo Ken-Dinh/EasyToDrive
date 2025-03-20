@@ -1,4 +1,4 @@
-import { IAdmin } from "./iadmin";
+import { IAdmin } from "../interface/iadmin";
 
 export class Admin implements IAdmin {
     constructor(

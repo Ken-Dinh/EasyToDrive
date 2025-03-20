@@ -1,4 +1,4 @@
-import { ISimulation } from "./isimulation";
+import { ISimulation } from "../interface/isimulation";
 
 export class Simulation implements ISimulation {
     constructor(

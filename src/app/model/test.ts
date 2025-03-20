@@ -1,4 +1,4 @@
-import { ITest } from "./itest";
+import { ITest } from "../interface/itest";
 
 export class Test implements ITest {
     constructor(

@@ -1,4 +1,4 @@
-import { IAvis } from "./iavis";
+import { IAvis } from "../interface/iavis";
 
 export class Avis implements IAvis {
     constructor(

@@ -1,4 +1,4 @@
-import { IEleve } from "./ieleve";
+import { IEleve } from "../interface/ieleve";
 
 export class Eleve implements IEleve {
     constructor(
