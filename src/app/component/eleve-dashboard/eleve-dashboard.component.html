@@ -1,0 +1,73 @@
+<div class="container d-flex justify-content-center align-items-center vh-100 p-3">
+    <div class="card p-4 shadow-lg" style="max-width: 1000px; width: 100%;">
+        <div class="col-md-2 d-flex justify-content">
+                <button class="btn btn-warning">Ajouter un commentaire</button>
+            </div>
+        <h3 class="text-center py-3 my-1 fw-bold text-warning bg-dark">Vos résultats</h3>
+
+        <!-- Section Examens -->
+        <h5 class="mt-4">Vos examens</h5>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-bordered text-nowrap">
+                <thead class="bg-warning">
+                    <tr>
+                        <th>ID</th>
+                        <th>Score/20</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elev of listeExamen">
+                        <td>{{ elev.examen_id }}</td>
+                        <td>{{ elev.score }}</td>
+                        <td>{{ elev.date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section Simulations -->
+        <h5 class="mt-4">Vos simulations</h5>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-bordered text-nowrap">
+                <thead class="bg-warning">
+                    <tr>
+                        <th>ID</th>
+                        <th>Validation</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elev of listeSimulation">
+                        <td>{{ elev.simulation_id }}</td>
+                        <td>{{ elev.validation ? 'Réussi' : 'Échoué' }}</td>
+                        <td>{{ elev.date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section Tests -->
+        <h5 class="mt-4">Vos tests</h5>
+        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-bordered text-nowrap">
+                <thead class="bg-warning">
+                    <tr>
+                        <th>ID</th>
+                        <th>Score/20</th>
+                        <th>Thème</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elev of listeTest">
+                        <td>{{ elev.test_id }}</td>
+                        <td>{{ elev.score }}</td>
+                        <td>{{ elev.theme }}</td>
+                        <td>{{ elev.date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
