@@ -53,7 +53,7 @@ import { LoginAutoecoleComponent } from './component/login-autoecole/login-autoe
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

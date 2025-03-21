@@ -1,37 +1,35 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Simulation } from '../../model/simulation';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-put-simulation',
-  standalone: false,
   templateUrl: './put-simulation.component.html',
-  styleUrl: './put-simulation.component.css'
+  standalone: false,
+  styleUrls: ['./put-simulation.component.css']
 })
-export class PutSimulationComponent {
+export class PutSimulationComponent implements OnInit {
+  
   putSimulationForm!: FormGroup;
 
-  listeSimulation?: Simulation[] = [{
-      simulation_id: 402,
-      date: "2023-11-14", 
-      validation: true,
-      
-    }]
+  
+  listeSimulation = [{
+    simulation_id: 402,
+    date: "2023-11-14",
+    validation: true
+  }];
 
-  constructor() {}
+  
   ngOnInit(): void {
     this.putSimulationForm = new FormGroup({
-      timestamp: new FormControl(""),
-      valie: new FormControl(""),
-      
+      date: new FormControl(this.listeSimulation[0].date),       
+      validation: new FormControl(this.listeSimulation[0].validation) 
     });
   }
-putSimulation(){
-  const timestamp = this.putSimulationForm.get("timestamp")?.value;
-  const valie = this.putSimulationForm.get("valie")?.value;
-  
-  
-}
-}
 
-
+  
+  putSimulation() {
+    const date = this.putSimulationForm.get("date")?.value;
+    const validation = this.putSimulationForm.get("validation")?.value;
+    console.log({ date, validation }); 
+  }
+}

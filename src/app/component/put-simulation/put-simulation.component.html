@@ -1,35 +1,30 @@
 <div class="container mt-5">
   <h2>Modifier une simulation</h2>
-
-  
   <form [formGroup]="putSimulationForm" class="container mx-auto py-3" *ngFor="let simulation of listeSimulation; let i = index">
     
-      
-      <div class="formGroup">
-          <label for="date{{i}}">Date de la simulation:</label>
-          <input
-            type="date"
-            id="date{{i}}"
-            formControlName="date"
-            class="form-control"
-            [ngModel]="simulation.date"
-            placeholder="{{ simulation.date }}"
-          />
-      </div>
+    <div class="formGroup">
+      <label for="date{{i}}">Date de la simulation:</label>
+      <input
+        type="date"
+        id="date{{i}}"
+        formControlName="date"
+        class="form-control"
+        placeholder="{{ simulation.date }}"
+      />
+    </div>
 
-      
-      <div class="formGroup">
-          <label for="validation{{i}}">Validation Examen:</label>
-          <input
-            type="checkbox"
-            id="validation{{i}}"
-            formControlName="validation"
-            class="form-check-input mx-3"
-            [ngModel]="simulation.validation"
-          />
-      </div>
+    
+    <div class="formGroup">
+      <label for="validation{{i}}">Validation Examen:</label>
+      <input
+        type="checkbox"
+        id="validation{{i}}"
+        formControlName="validation"
+        class="form-check-input mx-3"
+      />
+    </div>
 
-      
-      <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putSimulation()">Valider</button>
+    
+    <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putSimulation()">Valider</button>
   </form>
 </div>

@@ -1,35 +1,35 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Examen } from '../../model/examen';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-put-examen',
-  standalone: false,
   templateUrl: './put-examen.component.html',
-  styleUrl: './put-examen.component.css'
+  standalone: false,
+  styleUrls: ['./put-examen.component.css']
 })
-export class PutExamenComponent {
-  putExamenForm!: FormGroup;
+export class PutExamenComponent implements OnInit {
   
-  listeExamen?: Examen[] = [{
-      examen_id: 99,
-      date: "2025-11-29", 
-      score: 17.5
-    }]
+  putExamenForm!: FormGroup;
 
-  constructor() {}
+  
+  listeExamen = [{
+    examen_id: 99,
+    date: "2025-11-29",
+    score: 17.5
+  }];
+
+  
   ngOnInit(): void {
-    
     this.putExamenForm = new FormGroup({
-      score: new FormControl(""),
-      timestamp: new FormControl("")
-      
+      score: new FormControl(this.listeExamen[0].score), 
+      date: new FormControl(this.listeExamen[0].date)   
     });
   }
-putExamen(){
-  const score = this.putExamenForm.get("score")?.value;
-  const timestamp = this.putExamenForm.get("timestamp")?.value;
+
   
-  
-}
+  putExamen() {
+    const score = this.putExamenForm.get("score")?.value;
+    const date = this.putExamenForm.get("date")?.value;
+    console.log({ score, date }); 
+  }
 }
