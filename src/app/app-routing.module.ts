@@ -14,6 +14,7 @@ import { adminAuthGuard } from './guard/admin-auth.guard';
 import { LoginAdminComponent } from './component/login-admin/login-admin.component';
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { LoginAutoecoleComponent } from './component/login-autoecole/login-autoecole.component';
+import { EleveDashboardComponent } from './component/eleve-dashboard/eleve-dashboard.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,9 @@ const routes: Routes = [
   {path: "put-examen", component: PutExamenComponent, canActivate: [adminAuthGuard]},
   {path: "put-test", component: PutTestComponent, canActivate: [adminAuthGuard]},
   {path: "put-simulation", component: PutSimulationComponent, canActivate: [adminAuthGuard]},
+  {path: "eleve-dashboard", component: EleveDashboardComponent}, 
   {path: "", component: PageAccueilComponent}
+  
 ];
 
 @NgModule({
