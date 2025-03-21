@@ -61,8 +61,8 @@ export class AdminDashboardComponent {
   ];
 
   changeTable(event: Event) {
-    const target = event.target as HTMLSelectElement; // Typez l'élément cible
-    this.selectedTable = target.value; // Extrayez la valeur
+    const target = event.target as HTMLSelectElement; 
+    this.selectedTable = target.value; 
   }
 
   getSelectedTableData() {

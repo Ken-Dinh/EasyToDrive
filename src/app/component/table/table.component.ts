@@ -7,9 +7,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  @Input() data: any[] = []; // Reçoit les données de AdminDashboardComponent
+  @Input() data: any[] = []; 
 
-  // Méthode pour obtenir les clés des objets (utilisée pour les en-têtes de colonnes)
+  
   getKeys(obj: any): string[] {
     return Object.keys(obj);
   }
