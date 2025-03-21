@@ -15,9 +15,11 @@ import { LoginAdminComponent } from './component/login-admin/login-admin.compone
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { LoginAutoecoleComponent } from './component/login-autoecole/login-autoecole.component';
 import { EleveDashboardComponent } from './component/eleve-dashboard/eleve-dashboard.component';
+import { AddAvisComponent } from './component/add-avis/add-avis.component';
 
 
 const routes: Routes = [
+  // Formulaire pour se login
   {path: "login-eleve", component: LoginEleveComponent},
   {path: "login-admin", component: LoginAdminComponent},
   {path: "login-autoecole", component: LoginAutoecoleComponent},
@@ -26,6 +28,7 @@ const routes: Routes = [
   {path: "add-eleve", component: AddEleveComponent, canActivate: [adminAuthGuard]},
   {path: "add-examen", component: AddExamenComponent, canActivate: [adminAuthGuard]},
   {path: "add-test", component: AddTestComponent, canActivate: [adminAuthGuard]},
+  {path: "add-avis", component: AddAvisComponent},
   {path: "add-simulation", component: AddSimulationComponent, canActivate: [adminAuthGuard]},
   {path: "put-eleve", component: PutEleveComponent, canActivate: [adminAuthGuard]},
   {path: "put-examen", component: PutExamenComponent, canActivate: [adminAuthGuard]},
