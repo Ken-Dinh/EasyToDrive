@@ -9,6 +9,6 @@ export interface IEleve {
     ville?: string;
     date_inscription?: string;
     neph?: string;
-    note_etg?: number;
+    note_etg?: string;
     validation_etg?: boolean;
 }

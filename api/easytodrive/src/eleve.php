@@ -43,17 +43,17 @@
     function postEleve($data) {
         global $conn;
 
-        if (!isset($data["autoecole_id"],
-                    $data["login"],
-                    $data["password"],
-                    $data["naissance"],
-                    $data["rue"],
-                    $data["cp"],
-                    $data["ville"],
-                    $data["date_inscription"],
-                    $data["neph"],
-                    $data["note_etg"],
-                    $data["validation_etg"])) {
+        if (empty($data["autoecole_id"]) ||
+            empty($data["login"]) ||
+            empty($data["password"]) ||
+            empty($data["naissance"]) ||
+            empty($data["rue"]) ||
+            empty($data["cp"]) ||
+            empty($data["ville"]) ||
+            empty($data["date_inscription"]) ||
+            empty($data["neph"]) ||
+            empty($data["note_etg"]) ||
+            empty($data["validation_etg"])) {
             echo json_encode(["message" => "Missing data"]);
             return;
         }
@@ -69,22 +69,23 @@
                                         neph = :neph,
                                         note_etg = :note_etg,
                                         validation_etg = :validation_etg";
+        $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
 
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(":autoecole_id", $data["autoecole_id"]);
-        $stmt->bindParam(":login", $data["login"]);
-        $stmt->bindParam(":password", $data["password"]);
-        $stmt->bindParam(":naissance", $data["naissance"]);
-        $stmt->bindParam(":rue", $data["rue"]);
-        $stmt->bindParam(":cp", $data["cp"]);
-        $stmt->bindParam(":ville", $data["ville"]);
-        $stmt->bindParam(":date_inscription", $data["date_inscription"]);
-        $stmt->bindParam(":neph", $data["neph"]);
-        $stmt->bindParam(":note_etg", $data["note_etg"]);
-        $stmt->bindParam(":validation_etg", $data["validation_etg"]);
+        $stmt->bindParam(":autoecole_id", $data["autoecole_id"], PDO::PARAM_INT);
+        $stmt->bindParam(":login", $data["login"], PDO::PARAM_STR);
+        $stmt->bindParam(":password", $data["password"], PDO::PARAM_STR);
+        $stmt->bindParam(":naissance", $data["naissance"], PDO::PARAM_STR);
+        $stmt->bindParam(":rue", $data["rue"], PDO::PARAM_STR);
+        $stmt->bindParam(":cp", $data["cp"], PDO::PARAM_INT);
+        $stmt->bindParam(":ville", $data["ville"], PDO::PARAM_STR);
+        $stmt->bindParam(":date_inscription", $data["date_inscription"], PDO::PARAM_STR);
+        $stmt->bindParam(":neph", $data["neph"], PDO::PARAM_STR);
+        $stmt->bindParam(":note_etg", $data["note_etg"], PDO::PARAM_STR);
+        $stmt->bindParam(":validation_etg", $data["validation_etg"], PDO::PARAM_BOOL);
 
         if ($stmt->execute()) {
-            echo json_encode(["message" => "Eleve ajouté avec succès"]);
+            echo json_encode(["message" => "Elève ajouté avec succès"]);
         } else {
             echo json_encode(["message" => "Erreur lors de l'ajout de l'élève"]);
         }

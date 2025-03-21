@@ -42,7 +42,7 @@ listeExamen?: Examen[] = [{
     ville: "Coubron",
     date_inscription: "2023-08-21",
     neph: "563899279407",
-    note_etg: 14.5,
+    note_etg: "14.5",
     validation_etg: true,
     
   }]

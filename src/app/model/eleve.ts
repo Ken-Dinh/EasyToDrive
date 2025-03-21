@@ -12,7 +12,7 @@ export class Eleve implements IEleve {
         public ville?: string,
         public date_inscription?: string,
         public neph?: string,
-        public note_etg?: number,
+        public note_etg?: string,
         public validation_etg?: boolean
     ) {}
 }
