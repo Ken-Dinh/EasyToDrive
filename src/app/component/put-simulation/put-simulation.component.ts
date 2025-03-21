@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Simulation } from '../../model/simulation';
 
 @Component({
   selector: 'app-put-simulation',
@@ -9,6 +10,13 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class PutSimulationComponent {
   putSimulationForm!: FormGroup;
+
+  listeSimulation?: Simulation[] = [{
+      simulation_id: 402,
+      date: "2023-11-14", 
+      validation: true,
+      
+    }]
 
   constructor() {}
   ngOnInit(): void {

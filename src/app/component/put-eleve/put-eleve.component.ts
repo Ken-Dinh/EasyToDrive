@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { EleveService } from '../../service/eleve.service';
+import { Eleve } from '../../model/eleve';
 
 @Component({
   selector: 'app-put-eleve',
@@ -10,6 +11,21 @@ import { EleveService } from '../../service/eleve.service';
 })
 export class PutEleveComponent {
   putEleveForm!: FormGroup;
+
+  listeEleve?: Eleve[] = [{
+      eleve_id: 29,
+      login: "liam.cheurfa",
+      password: "liam123",
+      naissance: "2005-03-29",
+      rue: "51 rue jean jaurès",
+      cp: 93470,
+      ville: "Coubron",
+      date_inscription: "2023-08-21",
+      neph: "563899279407",
+      note_etg: 14.5,
+      validation_etg: true,
+      
+    }]
 
   constructor(private eleveService: EleveService) {}
   ngOnInit(): void {

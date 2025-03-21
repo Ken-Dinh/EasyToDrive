@@ -1,137 +1,129 @@
 <div class="container mt-5">
-    <h2>Modifier un élève</h2>
-  
-    <!-- Formulaire pour ajouter l'élève -->
-    <form [formGroup]="putEleveForm" class="container mx-auto py-3">
-      
-        
-          <div class="formGroup">
-            <label for="login">Login:</label>
-            <input
-              type="text"
-              id="login"
-              formControlName="login"
-              class="form-control"
-            />
-          
-        </div>
-  
-        
-          <div class="formGroup">
-            <label for="password">Mot de passe:</label>
-            <input
-              type="text"
-              id="password"
-              formControlName="password"
-              class="form-control"
-            />
-          
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="birthday">Date de Naissance:</label>
-            <input
-              type="date"
-              id="birthday"
-              formControlName="birthday"
-              class="form-control"
-            />
-          
-        </div>
-  
-        
-          <div class="formGroup">
-            <label for="rue">Rue:</label>
-            <input
-              type="text"
-              id="rue"
-              formControlName="rue"
-              class="form-control"
-            />
-         
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="cp">Code Postal:</label>
-            <input
-              type="text"
-              id="cp"
-              formControlName="cp"
-              class="form-control"
-            />
-         
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="ville">Ville:</label>
-            <input
-              type="text"
-              id="ville"
-              formControlName="ville"
-              class="form-control"
-            />
-          
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="dateInscription">Date d'inscription:</label>
-            <input
-              type="datetime-local"
-              id="dateInscription"
-              formControlName="dateInscription"
-              class="form-control"
-            />
-        
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="neph">Code Neph:</label>
-            <input
-              type="text"
-              id="neph"
-              formControlName="neph"
-              class="form-control"
-            />
-         
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="etg">Note ETG:</label>
-            <input
-              type="text"
-              id="etg"
-              formControlName="etg"
-              class="form-control"
-            />
-       
-      </div>
-  
-      
-        
-          <div class="formGroup">
-            <label for="valietg">Validation ETG:</label>
-            <input
-              type="checkbox"
-              id="valietg"
-              formControlName="valietg"
-              class="form-check-input mx-3" 
-            />
-        
-      </div>
-  
-      <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putEleve()">Valider</button>
-    </form>
-  </div>
+  <h2>Modifier un élève</h2>
 
+ 
+  <form [formGroup]="putEleveForm" class="container mx-auto py-3" *ngFor="let eleve of listeEleve; let i = index">
+    
+      <div class="formGroup">
+          <label for="login{{i}}">Login:</label>
+          <input
+            type="text"
+            id="login{{i}}"
+            formControlName="login"
+            class="form-control"
+            [ngModel]="eleve.login"
+            placeholder="{{ eleve.login }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="password{{i}}">Mot de passe:</label>
+          <input
+            type="text"
+            id="password{{i}}"
+            formControlName="password"
+            class="form-control"
+            [ngModel]="eleve.password"
+            placeholder="{{ eleve.password }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="birthday{{i}}">Date de Naissance:</label>
+          <input
+            type="date"
+            id="birthday{{i}}"
+            formControlName="birthday"
+            class="form-control"
+            [ngModel]="eleve.naissance"
+            placeholder="{{ eleve.naissance }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="rue{{i}}">Rue:</label>
+          <input
+            type="text"
+            id="rue{{i}}"
+            formControlName="rue"
+            class="form-control"
+            [ngModel]="eleve.rue"
+            placeholder="{{ eleve.rue }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="cp{{i}}">Code Postal:</label>
+          <input
+            type="text"
+            id="cp{{i}}"
+            formControlName="cp"
+            class="form-control"
+            [ngModel]="eleve.cp"
+            placeholder="{{ eleve.cp }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="ville{{i}}">Ville:</label>
+          <input
+            type="text"
+            id="ville{{i}}"
+            formControlName="ville"
+            class="form-control"
+            [ngModel]="eleve.ville"
+            placeholder="{{ eleve.ville }}"
+          />
+      </div>
+
+      
+      <div class="formGroup">
+          <label for="dateInscription{{i}}">Date d'inscription:</label>
+          <input
+            type="date"
+            id="dateInscription{{i}}"
+            formControlName="dateInscription"
+            class="form-control"
+            [ngModel]="eleve.date_inscription"
+            placeholder="{{ eleve.date_inscription }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="neph{{i}}">Code Neph:</label>
+          <input
+            type="text"
+            id="neph{{i}}"
+            formControlName="neph"
+            class="form-control"
+            [ngModel]="eleve.neph"
+            placeholder="{{ eleve.neph }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="etg{{i}}">Note ETG:</label>
+          <input
+            type="text"
+            id="etg{{i}}"
+            formControlName="etg"
+            class="form-control"
+            [ngModel]="eleve.note_etg"
+            placeholder="{{ eleve.note_etg }}"
+          />
+      </div>
+
+      <div class="formGroup">
+          <label for="valietg{{i}}">Validation ETG:</label>
+          <input
+            type="checkbox"
+            id="valietg{{i}}"
+            formControlName="valietg"
+            class="form-check-input mx-3"
+            [ngModel]="eleve.validation_etg"
+          />
+      </div>
+
+      <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putEleve()">Valider</button>
+  </form>
+</div>

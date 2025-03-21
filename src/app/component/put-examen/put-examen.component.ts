@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Examen } from '../../model/examen';
 
 @Component({
   selector: 'app-put-examen',
@@ -9,6 +10,12 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class PutExamenComponent {
   putExamenForm!: FormGroup;
+  
+  listeExamen?: Examen[] = [{
+      examen_id: 99,
+      date: "2025-11-29", 
+      score: 17.5
+    }]
 
   constructor() {}
   ngOnInit(): void {

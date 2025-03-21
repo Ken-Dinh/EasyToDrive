@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Test } from '../../model/test';
 
 @Component({
   selector: 'app-put-test',
@@ -9,6 +10,13 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class PutTestComponent {
   putTestForm!: FormGroup;
+  
+   listeTest?: Test[] = [{
+      test_id: 13,
+      date: "2023-11-14", 
+      score: 12.5,
+      theme: "Signalisation"
+    }]
 
   constructor() {}
   ngOnInit(): void {

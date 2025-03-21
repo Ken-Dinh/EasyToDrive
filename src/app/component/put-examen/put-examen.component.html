@@ -1,34 +1,37 @@
 <div class="container mt-5">
-    <h2>Modifier un examen</h2>
-  
-    <!-- Formulaire pour ajouter l'élève -->
-    <form [formGroup]="putExamenForm" class="container mx-auto py-3">
-      
-        
-          <div class="formGroup">
-            <label for="score">Score:</label>
-            <input
-              type="number" step="0.25"
-              id="score"
-              formControlName="score"
-              class="form-control"
-            />
-          
-        </div>
-  
-        
-          <div class="formGroup">
-            <label for="timestamp">Date de passage:</label>
-            <input
-              type="date"
-              id="timestamp"
-              formControlName="timestamp"
-              class="form-control"
-            />
-          
-        </div>
-  
-      <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putExamen()">Valider</button>
-    </form>
-  </div>
+  <h2>Modifier un examen</h2>
 
+  
+  <form [formGroup]="putExamenForm" class="container mx-auto py-3" *ngFor="let examen of listeExamen; let i = index">
+    
+      
+      <div class="formGroup">
+          <label for="score{{i}}">Score:</label>
+          <input
+            type="number"
+            step="0.25"
+            id="score{{i}}"
+            formControlName="score"
+            class="form-control"
+            [ngModel]="examen.score"
+            placeholder="{{ examen.score }}"
+          />
+      </div>
+
+      
+      <div class="formGroup">
+          <label for="date{{i}}">Date de passage:</label>
+          <input
+            type="date"
+            id="date{{i}}"
+            formControlName="date"
+            class="form-control"
+            [ngModel]="examen.date "
+            placeholder="{{ examen.date }}"
+          />
+      </div>
+
+      
+      <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putExamen()">Valider</button>
+  </form>
+</div>
