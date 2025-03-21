@@ -43,7 +43,7 @@ export class LoginAdminComponent implements OnInit {
       }
 
       localStorage.setItem("token", response.token);
-      this.route.navigate(["add-eleve"]);
+      this.route.navigate(["admin-dashboard"]);
     });
   }
 }
