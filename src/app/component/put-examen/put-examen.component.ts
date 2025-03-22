@@ -47,7 +47,8 @@ export class PutExamenComponent implements OnInit {
   }
 
   putExamen() {
-    const _examen: Examen = this.putExamenForm.getRawValue();
+    const formattedDate = this.putExamenForm.value.date.replace('T', ' ');
+    const _examen: Examen = {...this.putExamenForm.getRawValue(), date: formattedDate};
 
     this.examenService.putExamen(_examen).subscribe((response: any) => {
       this.message = response.message;

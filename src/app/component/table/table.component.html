@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let key of getKeys(data[0])">{{ key | replace: "_" : " " | titlecase }}</th>
-      <th>Actions</th>
+      <th *ngIf="data.length > 0">Actions</th>
     </tr>
   </thead>
   <tbody>

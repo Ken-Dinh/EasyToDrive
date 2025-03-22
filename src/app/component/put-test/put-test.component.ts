@@ -62,7 +62,8 @@ export class PutTestComponent implements OnInit {
   }
  
   putTest() {
-    const _test: Test = this.putTestForm.getRawValue();
+    const formattedDate = this.putTestForm.value.date.replace('T', ' ');
+    const _test: Test = {...this.putTestForm.getRawValue(), date: formattedDate};
 
     this.testService.putTest(_test).subscribe((response: any) => {
       this.message = response.message;

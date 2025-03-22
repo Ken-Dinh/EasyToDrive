@@ -76,7 +76,8 @@ export class PutEleveComponent implements OnInit {
   }
   
   putEleve() {
-    const _eleve: Eleve = this.putEleveForm.getRawValue();
+    const formattedDate = this.putEleveForm.value.date_inscription.replace('T', ' ');
+    const _eleve: Eleve = {...this.putEleveForm.getRawValue(), date_inscription: formattedDate};
 
     this.eleveService.putEleve(_eleve).subscribe((response: any) => {
       this.message = response.message;

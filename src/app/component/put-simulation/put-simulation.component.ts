@@ -60,7 +60,8 @@ export class PutSimulationComponent implements OnInit {
   }
 
   putSimulation() {
-    const _simulation: Simulation = this.putSimulationForm.getRawValue();
+    const formattedDate = this.putSimulationForm.value.date.replace('T', ' ');
+    const _simulation: Simulation = {...this.putSimulationForm.getRawValue(), date: formattedDate};
 
     this.simulationService.putSimulation(_simulation).subscribe((response: any) => {
       this.message = response.message;
