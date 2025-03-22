@@ -19,11 +19,13 @@ import { AddAvisComponent } from './component/add-avis/add-avis.component';
 
 
 const routes: Routes = [
+  {path: "", component: PageAccueilComponent},
   // Formulaire pour se login
   {path: "login-eleve", component: LoginEleveComponent},
   {path: "login-admin", component: LoginAdminComponent},
   {path: "login-autoecole", component: LoginAutoecoleComponent},
   // Formulaire pour modifier et ajouter des trucs dans la base de donnée (pour l'admin)
+  {path: "eleve-dashboard", component: EleveDashboardComponent},
   {path: "admin-dashboard", component: AdminDashboardComponent, canActivate: [adminAuthGuard]},
   {path: "add-eleve", component: AddEleveComponent, canActivate: [adminAuthGuard]},
   {path: "add-examen", component: AddExamenComponent, canActivate: [adminAuthGuard]},
@@ -33,9 +35,7 @@ const routes: Routes = [
   {path: "put-eleve", component: PutEleveComponent, canActivate: [adminAuthGuard]},
   {path: "put-examen", component: PutExamenComponent, canActivate: [adminAuthGuard]},
   {path: "put-test", component: PutTestComponent, canActivate: [adminAuthGuard]},
-  {path: "put-simulation", component: PutSimulationComponent, canActivate: [adminAuthGuard]},
-  {path: "eleve-dashboard", component: EleveDashboardComponent}, 
-  {path: "", component: PageAccueilComponent}
+  {path: "put-simulation", component: PutSimulationComponent, canActivate: [adminAuthGuard]}
   
 ];
 

@@ -53,7 +53,7 @@
             empty($data["date_inscription"]) ||
             empty($data["neph"]) ||
             empty($data["note_etg"]) ||
-            empty($data["validation_etg"])) {
+            !isset($data["validation_etg"])) {
             echo json_encode(["message" => "Missing data"]);
             return;
         }

@@ -4,26 +4,13 @@
     
     <div class="formGroup">
       <label for="date{{i}}">Date de la simulation:</label>
-      <input
-        type="date"
-        id="date{{i}}"
-        formControlName="date"
-        class="form-control"
-        placeholder="{{ simulation.date }}"
-      />
+      <input type="date" id="date{{i}}" formControlName="date" class="form-control" placeholder="{{ simulation.date }}"/>
     </div>
 
-    
     <div class="formGroup">
       <label for="validation{{i}}">Validation Examen:</label>
-      <input
-        type="checkbox"
-        id="validation{{i}}"
-        formControlName="validation"
-        class="form-check-input mx-3"
-      />
+      <input type="checkbox" id="validation{{i}}" formControlName="validation" class="form-check-input mx-3" />
     </div>
-
     
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putSimulation()">Valider</button>
   </form>

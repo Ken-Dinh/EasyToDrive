@@ -4,123 +4,54 @@
     
     <div class="formGroup">
       <label for="login{{i}}">Login:</label>
-      <input
-        type="text"
-        id="login{{i}}"
-        formControlName="login"
-        class="form-control"
-        placeholder="{{ eleve.login }}"
-      />
+      <input type="text" id="login{{i}}" formControlName="login" class="form-control" placeholder="{{ eleve.login }}" />
     </div>
-
     
     <div class="formGroup">
       <label for="password{{i}}">Mot de passe:</label>
-      <input
-        type="text"
-        id="password{{i}}"
-        formControlName="password"
-        class="form-control"
-        placeholder="{{ eleve.password }}"
-      />
+      <input type="text" id="password{{i}}" formControlName="password" class="form-control" placeholder="{{ eleve.password }}" />
     </div>
-
     
     <div class="formGroup">
       <label for="birthday{{i}}">Date de Naissance:</label>
-      <input
-        type="date"
-        id="birthday{{i}}"
-        formControlName="birthday"
-        class="form-control"
-        placeholder="{{ eleve.naissance }}"
-      />
+      <input type="date" id="birthday{{i}}" formControlName="birthday" class="form-control" placeholder="{{ eleve.naissance }}" />
     </div>
-
    
     <div class="formGroup">
       <label for="rue{{i}}">Rue:</label>
-      <input
-        type="text"
-        id="rue{{i}}"
-        formControlName="rue"
-        class="form-control"
-        placeholder="{{ eleve.rue }}"
-      />
+      <input type="text" id="rue{{i}}" formControlName="rue" class="form-control" placeholder="{{ eleve.rue }}" />
     </div>
-
     
     <div class="formGroup">
       <label for="cp{{i}}">Code Postal:</label>
-      <input
-        type="text"
-        id="cp{{i}}"
-        formControlName="cp"
-        class="form-control"
-        placeholder="{{ eleve.cp }}"
-      />
+      <input type="text" id="cp{{i}}" formControlName="cp" class="form-control" placeholder="{{ eleve.cp }}" />
     </div>
-
     
     <div class="formGroup">
       <label for="ville{{i}}">Ville:</label>
-      <input
-        type="text"
-        id="ville{{i}}"
-        formControlName="ville"
-        class="form-control"
-        placeholder="{{ eleve.ville }}"
-      />
+      <input type="text" id="ville{{i}}" formControlName="ville" class="form-control" placeholder="{{ eleve.ville }}" />
     </div>
 
-    
     <div class="formGroup">
       <label for="dateInscription{{i}}">Date d'inscription:</label>
-      <input
-        type="date"
-        id="dateInscription{{i}}"
-        formControlName="dateInscription"
-        class="form-control"
-        placeholder="{{ eleve.date_inscription }}"
-      />
+      <input type="date" id="dateInscription{{i}}" formControlName="dateInscription" class="form-control" placeholder="{{ eleve.date_inscription }}" />
     </div>
 
-    
     <div class="formGroup">
       <label for="neph{{i}}">Code Neph:</label>
-      <input
-        type="text"
-        id="neph{{i}}"
-        formControlName="neph"
-        class="form-control"
-        placeholder="{{ eleve.neph }}"
-      />
+      <input type="text" id="neph{{i}}" formControlName="neph" class="form-control" placeholder="{{ eleve.neph }}" />
     </div>
-
     
     <div class="formGroup">
       <label for="etg{{i}}">Note ETG:</label>
-      <input
-        type="text"
-        id="etg{{i}}"
-        formControlName="etg"
-        class="form-control"
-        placeholder="{{ eleve.note_etg }}"
-      />
+      <input type="text" id="etg{{i}}" formControlName="etg" class="form-control" placeholder="{{ eleve.note_etg }}" />
     </div>
-
     
     <div class="formGroup">
       <label for="valietg{{i}}">Validation ETG:</label>
-      <input
-        type="checkbox"
-        id="valietg{{i}}"
-        formControlName="valietg"
-        class="form-check-input mx-3"
-      />
+      <input type="checkbox" id="valietg{{i}}" formControlName="valietg" class="form-check-input mx-3" />
     </div>
 
-    
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putEleve()">Valider</button>
   </form>
 </div>

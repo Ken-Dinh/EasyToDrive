@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Examen } from '../../model/examen';
+import { ExamenService } from '../../service/examen.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-add-examen',
@@ -9,19 +12,28 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AddExamenComponent {
   addExamenForm!: FormGroup;
+  message: string = "";
+  currentDate: string = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'fr');
 
-  constructor() {}
+  constructor(private examenService: ExamenService) {}
   ngOnInit(): void {
     this.addExamenForm = new FormGroup({
       score: new FormControl(""),
-      timestamp: new FormControl("")
-      
+      timestamp: new FormControl(this.currentDate)
     });
   }
-addExamen(){
-  const score = this.addExamenForm.get("score")?.value;
-  const timestamp = this.addExamenForm.get("timestamp")?.value;
-  
-  
-}
+
+  addExamen(){
+    const score = this.addExamenForm.get("score")?.value;
+    const date = this.addExamenForm.get("timestamp")?.value;
+    
+    const _examen: Examen = {
+      score: parseFloat(score),
+      date: date
+    }
+
+    this.examenService.postExamen(_examen).subscribe((response: any) => {
+      this.message = response.message;
+    });
+  }
 }

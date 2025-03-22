@@ -20,7 +20,7 @@
                     <tr *ngFor="let elev of listeExamen">
                         <td>{{ elev.examen_id }}</td>
                         <td>{{ elev.score }}</td>
-                        <td>{{ elev.date }}</td>
+                        <td>{{ elev.date | date: "dd MMMM yyyy" : '' : "fr"}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -41,7 +41,7 @@
                     <tr *ngFor="let elev of listeSimulation">
                         <td>{{ elev.simulation_id }}</td>
                         <td>{{ elev.validation ? 'Réussi' : 'Échoué' }}</td>
-                        <td>{{ elev.date }}</td>
+                        <td>{{ elev.date | date: "dd MMMM yyyy" : '' : "fr"}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -64,7 +64,7 @@
                         <td>{{ elev.test_id }}</td>
                         <td>{{ elev.score }}</td>
                         <td>{{ elev.theme }}</td>
-                        <td>{{ elev.date }}</td>
+                        <td>{{ elev.date | date: "dd MMMM yyyy" : '' : "fr"}}</td>
                     </tr>
                 </tbody>
             </table>

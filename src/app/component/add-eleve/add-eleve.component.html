@@ -15,8 +15,8 @@
 
     <div class="formGroup">
       <label for="autoecole_id">Auto-Ecole:</label>
-      <div class="input-group mb-3">
-        <select class="custom-select" id="inputGroupSelect01" formControlName="autoecole_id">
+      <div class="input-group">
+        <select class="custom-select" id="autoecoleSelect" formControlName="autoecole_id">
           <option selected>Choisir une option...</option>
           <option value="{{item.autoecole_id}}" *ngFor="let item of listeAutoEcole">{{item.nom}}</option>
         </select>

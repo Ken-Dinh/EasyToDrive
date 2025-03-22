@@ -43,7 +43,7 @@ export class LoginEleveComponent implements OnInit {
       }
 
       localStorage.setItem("token", response.token);
-      // this.route.navigate(["eleve-dashboard"]); // page de l'étudiant
+      this.route.navigate(["eleve-dashboard"]);
     });
   }
 }

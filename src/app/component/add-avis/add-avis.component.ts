@@ -5,8 +5,9 @@ import { Avis } from '../../model/avis';
 
 @Component({
   selector: 'app-add-avis',
+  standalone: false,
   templateUrl: './add-avis.component.html',
-  styleUrls: ['./add-avis.component.css']
+  styleUrl: './add-avis.component.css'
 })
 
 export  class AddAvisComponent {

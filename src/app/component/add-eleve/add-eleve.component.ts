@@ -4,6 +4,7 @@ import { Eleve } from '../../model/eleve';
 import { EleveService } from '../../service/eleve.service';
 import { AutoecoleService } from '../../service/autoecole.service';
 import { AutoEcole } from '../../model/auto-ecole';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-add-eleve',
@@ -15,6 +16,8 @@ export class AddEleveComponent implements OnInit {
   addEleveForm!: FormGroup;
   listeAutoEcole: AutoEcole[] = [];
   message: string = "";
+  currentTimestamp: string = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'fr');
+  currentDate: string = formatDate(new Date(), 'yyyy-MM-dd', 'fr');
 
   constructor(private eleveService: EleveService, private autoEcoleService: AutoecoleService) {}
 
@@ -23,14 +26,14 @@ export class AddEleveComponent implements OnInit {
       login: new FormControl(""),
       password: new FormControl(""),
       autoecole_id: new FormControl(""),
-      birthday: new FormControl(""),
+      birthday: new FormControl(this.currentDate),
       rue: new FormControl(""),
       cp:  new FormControl(""),
       ville: new FormControl(""),
-      dateInscription: new FormControl(""),
+      dateInscription: new FormControl(this.currentTimestamp),
       neph: new FormControl(""),
       etg: new FormControl(""),
-      valietg: new FormControl("")
+      valietg: new FormControl(false)
     });
 
     this.getAutoEcole();
@@ -69,8 +72,8 @@ export class AddEleveComponent implements OnInit {
       validation_etg: valietg
     }
 
-    this.eleveService.postEleve(_eleve).subscribe((data: any) => {
-      this.message = data.message;
+    this.eleveService.postEleve(_eleve).subscribe((response: any) => {
+      this.message = response.message;
     });
   }
 }

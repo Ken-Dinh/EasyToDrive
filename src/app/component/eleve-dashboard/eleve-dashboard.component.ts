@@ -11,24 +11,24 @@ import { Simulation } from '../../model/simulation';
   styleUrl: './eleve-dashboard.component.css'
 })
 export class EleveDashboardComponent {
-  listeExamen?: Examen[] = [{
+  listeExamen: Examen[] = [{
     examen_id: 99,
     date: "2025-16-29", 
     score: 17.5
   }]
 
-  listeTest?: Test[] = [{
+  listeTest: Test[] = [{
     test_id: 13,
     date: "2023-11-14", 
     score: 12.5,
     theme: "Signalisation"
   }]
 
-  listeSimulation?: Simulation[] = [{
+  listeSimulation: Simulation[] = [{
     simulation_id: 402,
     date: "2016-11-14", 
-    validation: true,
-    
+    validation: true
   }]
+  
 
 }
