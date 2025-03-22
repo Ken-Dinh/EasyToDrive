@@ -1,0 +1,166 @@
+<div class="container d-flex justify-content-center align-items-center vh-100 p-3">
+  <div class="card p-4 shadow-lg" style="max-width: 1200px; width: 100%;">
+    <h3 class="text-center py-3 my-1 fw-bold text-warning bg-dark">Consulté les résultats de vos élèves</h3>
+    
+    <div class="row">
+      <div class="col-md-12 p-3">
+        <div class="d-flex align-items-center bg-warning p-2 rounded">
+          <label class="me-2">Sélectionnez un élève :</label>
+          <select class="form-select w-auto" (change)="changeEleve($event)">
+            <option *ngFor="let eleve of listeEleves" [value]="eleve.eleve_id">
+              {{ eleve.login }} ({{ eleve.ville }})
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Affichage des résultats de l'élève sélectionné -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <!-- Résultats des examens -->
+          <h5 class="mt-4">Examens</h5>
+          <table class="table table-bordered text-nowrap">
+            <thead class="bg-warning">
+              <tr>
+                <th>ID</th>
+                <th>Score/20</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let examen of selectedEleveExamens">
+                <td>{{ examen.examen_id }}</td>
+                <td>{{ examen.score }}</td>
+                <td>{{ examen.date | date: "dd MMMM yyyy" : '' : "fr" }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Résultats des simulations -->
+          <h5 class="mt-4">Simulations</h5>
+          <table class="table table-bordered text-nowrap">
+            <thead class="bg-warning">
+              <tr>
+                <th>ID</th>
+                <th>Validation</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let simulation of selectedEleveSimulations">
+                <td>{{ simulation.simulation_id }}</td>
+                <td>{{ simulation.validation ? 'Réussi' : 'Échoué' }}</td>
+                <td>{{ simulation.date | date: "dd MMMM yyyy" : '' : "fr" }}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Résultats des tests -->
+          <h5 class="mt-4">Tests</h5>
+          <table class="table table-bordered text-nowrap">
+            <thead class="bg-warning">
+              <tr>
+                <th>ID</th>
+                <th>Score/20</th>
+                <th>Thème</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let test of selectedEleveTests">
+                <td>{{ test.test_id }}</td>
+                <td>{{ test.score }}</td>
+                <td>{{ test.theme }}</td>
+                <td>{{ test.date | date: "dd MMMM yyyy" : '' : "fr" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="container d-flex justify-content-center align-items-center vh-100 p-3">
+    <div class="card p-4 shadow-lg" style="max-width: 1200px; width: 100%;">
+      <!-- Sélecteur pour choisir un élève -->
+      <div class="row">
+        <div class="col-md-12 p-3">
+          <div class="d-flex align-items-center bg-warning p-2 rounded">
+            <label class="me-2">Sélectionnez un élève :</label>
+            <select class="form-select w-auto" (change)="changeEleve($event)">
+              <option *ngFor="let eleve of listeEleves" [value]="eleve.eleve_id">
+                {{ eleve.login }} ({{ eleve.ville }})
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Affichage des résultats de l'élève sélectionné -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <!-- Résultats des examens -->
+            <h5 class="mt-4">Examens</h5>
+            <table class="table table-bordered text-nowrap">
+              <thead class="bg-warning">
+                <tr>
+                  <th>ID</th>
+                  <th>Score/20</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let examen of selectedEleveExamens">
+                  <td>{{ examen.examen_id }}</td>
+                  <td>{{ examen.score }}</td>
+                  <td>{{ examen.date | date: "dd MMMM yyyy" : '' : "fr" }}</td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <!-- Résultats des simulations -->
+            <h5 class="mt-4">Simulations</h5>
+            <table class="table table-bordered text-nowrap">
+              <thead class="bg-warning">
+                <tr>
+                  <th>ID</th>
+                  <th>Validation</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let simulation of selectedEleveSimulations">
+                  <td>{{ simulation.simulation_id }}</td>
+                  <td>{{ simulation.validation ? 'Réussi' : 'Échoué' }}</td>
+                  <td>{{ simulation.date | date: "dd MMMM yyyy" : '' : "fr" }}</td>
+                </tr>
+              </tbody>
+            </table>
+  
+            <!-- Résultats des tests -->
+            <h5 class="mt-4">Tests</h5>
+            <table class="table table-bordered text-nowrap">
+              <thead class="bg-warning">
+                <tr>
+                  <th>ID</th>
+                  <th>Score/20</th>
+                  <th>Thème</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let test of selectedEleveTests">
+                  <td>{{ test.test_id }}</td>
+                  <td>{{ test.score }}</td>
+                  <td>{{ test.theme }}</td>
+                  <td>{{ test.date | date: "dd MMMM yyyy" : '' : "fr" }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

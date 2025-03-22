@@ -195,4 +195,40 @@ export class AdminDashboardComponent implements OnInit {
       this.message = response.message;
     });
   }
+
+/*
+  showDeletePopup = false; 
+  itemToDelete: any; 
+
+  
+  openDeletePopup(item: any) {
+    this.itemToDelete = item;
+    this.showDeletePopup = true;
+  }
+
+  
+  onDeleteConfirmed() {
+    
+    switch (this.selectedTable) {
+      case 'eleves':
+        this.listeEleve = this.listeEleve.filter(e => e.id !== this.itemToDelete.id);
+        break;
+      case 'examens':
+        this.listeExamen = this.listeExamen.filter(e => e.id !== this.itemToDelete.id);
+        break;
+      case 'tests':
+        this.listeTest = this.listeTest.filter(e => e.id !== this.itemToDelete.id);
+        break;
+      case 'simulation':
+        this.listeSimulation = this.listeSimulation.filter(e => e.id !== this.itemToDelete.id);
+        break;
+    }
+    this.showDeletePopup = false; 
+  }
+
+  
+  onDeleteCancelled() {
+    this.showDeletePopup = false; 
+  }
+*/
 }
