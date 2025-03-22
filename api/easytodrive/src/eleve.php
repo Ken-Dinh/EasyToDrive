@@ -100,14 +100,9 @@
             $data = json_decode(file_get_contents("php://input"), true);
             postEleve($data);
             break;
-        case "PUT":
-            echo json_encode(["message" => "PUT"]);
-            break;
-        case "DELETE":
-            echo json_encode(["message" => "DELETE"]);
-            break;
         default:
             echo json_encode(["message" => "Invalid request method"]);
+            break;
     }
 
 ?>

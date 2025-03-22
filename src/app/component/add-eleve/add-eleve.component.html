@@ -24,8 +24,8 @@
     </div>
 
     <div class="formGroup">
-      <label for="birthday">Date de Naissance:</label>
-      <input type="date" id="birthday" formControlName="birthday" class="form-control"/>
+      <label for="naissance">Date de Naissance:</label>
+      <input type="date" id="naissance" formControlName="naissance" class="form-control"/>
     </div>
   
     <div class="formGroup">
@@ -44,8 +44,8 @@
     </div>
   
     <div class="formGroup">
-      <label for="dateInscription">Date d'inscription:</label>
-      <input type="datetime-local" id="dateInscription" formControlName="dateInscription" class="form-control"/>
+      <label for="date_inscription">Date d'inscription:</label>
+      <input type="datetime-local" id="date_inscription" formControlName="date_inscription" class="form-control"/>
     </div>
   
     <div class="formGroup">
@@ -54,18 +54,18 @@
     </div>
   
     <div class="formGroup">
-      <label for="etg">Note ETG:</label>
-      <input type="text" id="etg" formControlName="etg" class="form-control"/>
+      <label for="note_etg">Note ETG:</label>
+      <input type="text" id="note_etg" formControlName="note_etg" class="form-control"/>
     </div>
   
     <div class="formGroup">
-      <label for="valietg">Validation ETG:</label>
-      <input type="checkbox" id="valietg" formControlName="valietg" class="form-check-input mx-3"/>
+      <label for="validation_etg">Validation ETG:</label>
+      <input type="checkbox" id="validation_etg" formControlName="validation_etg" class="form-check-input mx-3"/>
     </div>
   
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="addEleve()">Valider</button>
-    <h5 *ngIf="message == 'Elève ajouté avec succès'" class="text-success">{{ message }}</h5>
-    <h5 *ngIf="message != 'Elève ajouté avec succès'" class="text-danger">{{ message }}</h5>
+    <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
   </form>
 </div>
 

@@ -29,5 +29,7 @@
         </div>
       </div>
     </div>
+    <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
   </div>
 </div>

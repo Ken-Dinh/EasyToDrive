@@ -10,13 +10,13 @@
     </div>
       
     <div class="formGroup">
-      <label for="timestamp">Date de passage:</label>
-      <input type="datetime-local" id="timestamp" formControlName="timestamp" class="form-control"/>
+      <label for="date">Date de passage:</label>
+      <input type="datetime-local" id="date" formControlName="date" class="form-control"/>
     </div>
 
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="addExamen()">Valider</button>
-    <h5 *ngIf="message == 'Examen ajouté avec succès'" class="text-success">{{ message }}</h5>
-    <h5 *ngIf="message != 'Examen ajouté avec succès'" class="text-danger">{{ message }}</h5>
+    <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
   </form>
 </div>
 

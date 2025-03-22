@@ -19,18 +19,12 @@ export class AddExamenComponent {
   ngOnInit(): void {
     this.addExamenForm = new FormGroup({
       score: new FormControl(""),
-      timestamp: new FormControl(this.currentDate)
+      date: new FormControl(this.currentDate)
     });
   }
 
   addExamen(){
-    const score = this.addExamenForm.get("score")?.value;
-    const date = this.addExamenForm.get("timestamp")?.value;
-    
-    const _examen: Examen = {
-      score: parseFloat(score),
-      date: date
-    }
+    const _examen: Examen = this.addExamenForm.value;
 
     this.examenService.postExamen(_examen).subscribe((response: any) => {
       this.message = response.message;

@@ -14,6 +14,9 @@ export class TableComponent {
   @Output() edit = new EventEmitter<any>();
 
   getKeys(obj: any): string[] {
+    if (!obj) {
+      return [""];
+    }
     return Object.keys(obj);
   }
 

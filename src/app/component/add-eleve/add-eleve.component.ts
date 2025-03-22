@@ -23,17 +23,17 @@ export class AddEleveComponent implements OnInit {
 
   ngOnInit(): void {
     this.addEleveForm = new FormGroup({
+      autoecole_id: new FormControl(""),
       login: new FormControl(""),
       password: new FormControl(""),
-      autoecole_id: new FormControl(""),
-      birthday: new FormControl(this.currentDate),
+      naissance: new FormControl(this.currentDate),
       rue: new FormControl(""),
       cp:  new FormControl(""),
       ville: new FormControl(""),
-      dateInscription: new FormControl(this.currentTimestamp),
+      date_inscription: new FormControl(this.currentTimestamp),
       neph: new FormControl(""),
-      etg: new FormControl(""),
-      valietg: new FormControl(false)
+      note_etg: new FormControl(""),
+      validation_etg: new FormControl(false)
     });
 
     this.getAutoEcole();
@@ -46,32 +46,7 @@ export class AddEleveComponent implements OnInit {
   }
 
   addEleve(){
-    const login = this.addEleveForm.get("login")?.value;
-    const password = this.addEleveForm.get("password")?.value;
-    const autoecole_id = this.addEleveForm.get("autoecole_id")?.value;
-    const birthday = this.addEleveForm.get("birthday")?.value;
-    const rue = this.addEleveForm.get("rue")?.value;
-    const cp = this.addEleveForm.get("cp")?.value;
-    const ville = this.addEleveForm.get("ville")?.value;
-    const dateInscription = this.addEleveForm.get("dateInscription")?.value;
-    const neph = this.addEleveForm.get("neph")?.value;
-    const etg = this.addEleveForm.get("etg")?.value;
-    const valietg = this.addEleveForm.get("valietg")?.value;
-    
-    const _eleve: Eleve = {
-      autoecole_id: parseInt(autoecole_id),
-      login: login,
-      password: password,
-      naissance: birthday,
-      rue: rue,
-      cp: parseInt(cp),
-      ville: ville,
-      date_inscription: dateInscription,
-      neph: neph,
-      note_etg: etg,
-      validation_etg: valietg
-    }
-
+    const _eleve: Eleve = this.addEleveForm.value;
     this.eleveService.postEleve(_eleve).subscribe((response: any) => {
       this.message = response.message;
     });

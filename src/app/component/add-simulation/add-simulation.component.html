@@ -14,18 +14,18 @@
     </div>
 
     <div class="formGroup">
-      <label for="timestamp">Date de la simulation:</label>
-      <input type="datetime-local" id="timestamp" formControlName="timestamp" class="form-control"/>
+      <label for="date">Date de la simulation:</label>
+      <input type="datetime-local" id="date" formControlName="date" class="form-control"/>
     </div>
 
     <div class="formGroup">
-      <label for="valie">Validation Examen:</label>
-      <input type="checkbox" id="valie" formControlName="valie" class="form-check-input mx-3"/>
+      <label for="validation">Validation Examen:</label>
+      <input type="checkbox" id="validation" formControlName="validation" class="form-check-input mx-3"/>
     </div>
 
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="addSimulation()">Valider</button>
-    <h5 *ngIf="message == 'Simulation ajouté avec succès'" class="text-success">{{ message }}</h5>
-    <h5 *ngIf="message != 'Simulation ajouté avec succès'" class="text-danger">{{ message }}</h5>
+    <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
   </form>
 </div>
 

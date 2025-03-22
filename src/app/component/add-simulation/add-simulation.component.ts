@@ -23,8 +23,8 @@ export class AddSimulationComponent {
   ngOnInit(): void {
     this.addSimulationForm = new FormGroup({
       examen_id: new FormControl(""),
-      timestamp: new FormControl(this.currentDate),
-      valie: new FormControl(false)
+      date: new FormControl(this.currentDate),
+      validation: new FormControl(false)
     });
 
     this.getExamen();
@@ -37,16 +37,7 @@ export class AddSimulationComponent {
   }
 
   addSimulation(){
-    const examen_id = this.addSimulationForm.get("examen_id")?.value;
-    const date = this.addSimulationForm.get("timestamp")?.value;
-    const validation = this.addSimulationForm.get("valie")?.value;
-    
-    const _simulation: Simulation = {
-      examen_id: parseInt(examen_id),
-      date: date,
-      validation: validation
-    }
-    
+    const _simulation: Simulation = this.addSimulationForm.value;
     this.simulationService.postSimulation(_simulation).subscribe((response: any) => {
       this.message = response.message;
     });

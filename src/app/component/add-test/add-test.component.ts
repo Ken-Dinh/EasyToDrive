@@ -16,7 +16,7 @@ export class AddTestComponent {
   addTestForm!: FormGroup;
   listeExamen: Examen[] = [];
   message: string = "";
-  currentDate: string = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'fr');
+  currentDate: string = formatDate(new Date(), 'yyyy-MM-dd', 'fr');
 
   constructor(private examenService: ExamenService, private testService: TestService) {}
 
@@ -24,7 +24,7 @@ export class AddTestComponent {
     this.addTestForm = new FormGroup({
       examen_id: new FormControl(""),
       theme: new FormControl(""),
-      timestamp: new FormControl(""),
+      date: new FormControl(this.currentDate),
       score: new FormControl("")
     });
 
@@ -38,18 +38,7 @@ export class AddTestComponent {
   }
 
   addTest(){
-    const examen_id = this.addTestForm.get("examen_id")?.value;
-    const theme = this.addTestForm.get("theme")?.value;
-    const date = this.addTestForm.get("timestamp")?.value;
-    const score = this.addTestForm.get("score")?.value;
-
-    const _test: Test = {
-      examen_id: parseInt(examen_id),
-      theme: theme,
-      date: date,
-      score: parseFloat(score)
-    }
-
+    const _test: Test = this.addTestForm.value;
     this.testService.postTest(_test).subscribe((response: any) => {
       this.message = response.message;
     });

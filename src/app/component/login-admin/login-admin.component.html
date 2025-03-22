@@ -1,12 +1,13 @@
 <form [formGroup]="loginAdminForm">
-    <div class="formGroup">
-      <label for="Login">Login</label>
-      <input type="text" class="form-control" id="login" formControlName="login">
-    </div>
-    <div class="formGroup">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password">
-    </div>
-    <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
-    <h5 class="text-danger">{{ message }}</h5>
-  </form>
+  <h2>Connexion Admin</h2>
+  <div class="formGroup">
+    <label for="Login">Login</label>
+    <input type="text" class="form-control" id="login" formControlName="login">
+  </div>
+  <div class="formGroup">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" formControlName="password">
+  </div>
+  <button type="button" class="btn btn-primary" (click)="login()">Submit</button>
+  <h5 class="text-danger">{{ message }}</h5>
+</form>

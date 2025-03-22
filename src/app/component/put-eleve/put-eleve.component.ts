@@ -16,7 +16,7 @@ export class PutEleveComponent implements OnInit {
   listeEleve: Eleve[] = [{
       eleve_id: 29,
       login: "liam.cheurfa",
-      password: "liam123",
+      password: "liam12",
       naissance: "2005-03-29",
       rue: "51 rue jean jaurès",
       cp: 93470,
