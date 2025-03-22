@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AutoEcole } from '../../model/auto-ecole';
 import { redirect } from '../../model/redirect';
 import { AuthguardValidationService } from '../../service/authguard-validation.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login-autoecole',
@@ -16,14 +17,17 @@ export class LoginAutoecoleComponent {
 loginAutoecoleForm!: FormGroup;
   message: string = '';
 
-  constructor(private loginAdminService: LoginAutoecoleService, private authguardValidationService: AuthguardValidationService, private route: Router) {}
+  constructor(private loginAdminService: LoginAutoecoleService,
+              private authguardValidationService: AuthguardValidationService,
+              private route: Router,
+              private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginAutoecoleForm = new FormGroup({
       login: new FormControl(''),
       password: new FormControl('')
     });
-    redirect(this.authguardValidationService, this.route);
+    redirect(this.authguardValidationService, this.route, this.authService);
   }
 
   login() {
@@ -45,8 +49,9 @@ loginAutoecoleForm!: FormGroup;
         return;
       }
 
-      localStorage.setItem("token", response.token);
+      this.authService.setToken(response.token);
       // this.route.navigate(["autoecole-dashboard"]);
     });
+    
   }
 }

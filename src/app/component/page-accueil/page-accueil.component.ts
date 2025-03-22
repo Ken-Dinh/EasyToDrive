@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthguardValidationService } from '../../service/authguard-validation.service';
 import { Router } from '@angular/router';
 import { redirect } from '../../model/redirect';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-page-accueil',
@@ -12,10 +13,10 @@ import { redirect } from '../../model/redirect';
 })
 export class PageAccueilComponent implements OnInit {
 
-  constructor(private authguardValidationService: AuthguardValidationService, private route: Router) {}
+  constructor(private authguardValidationService: AuthguardValidationService, private route: Router, private authService: AuthService) {}
   
   ngOnInit(): void {
-    redirect(this.authguardValidationService, this.route);
+    redirect(this.authguardValidationService, this.route, this.authService);
   }
 
 }

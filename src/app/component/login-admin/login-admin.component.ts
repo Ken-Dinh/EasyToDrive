@@ -5,6 +5,7 @@ import { LoginAdminService } from '../../service/login-admin.service';
 import { Admin } from '../../model/admin';
 import { redirect } from '../../model/redirect';
 import { AuthguardValidationService } from '../../service/authguard-validation.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login-admin',
@@ -16,14 +17,17 @@ export class LoginAdminComponent implements OnInit {
   loginAdminForm!: FormGroup;
   message: string = '';
 
-  constructor(private loginAdminService: LoginAdminService, private authguardValidationService: AuthguardValidationService, private route: Router) {}
+  constructor(private loginAdminService: LoginAdminService,
+              private authguardValidationService: AuthguardValidationService,
+              private route: Router,
+              private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginAdminForm = new FormGroup({
       login: new FormControl(''),
       password: new FormControl('')
     });
-    redirect(this.authguardValidationService, this.route);
+    redirect(this.authguardValidationService, this.route, this.authService);
   }
 
   login() {
@@ -45,7 +49,7 @@ export class LoginAdminComponent implements OnInit {
         return;
       }
 
-      localStorage.setItem("token", response.token);
+      this.authService.setToken(response.token);
       this.route.navigate(["admin-dashboard"]);
     });
   }

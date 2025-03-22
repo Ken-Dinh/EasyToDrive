@@ -5,6 +5,7 @@ import { Eleve } from '../../model/eleve';
 import { Router } from '@angular/router';
 import { AuthguardValidationService } from '../../service/authguard-validation.service';
 import { redirect } from '../../model/redirect';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login-eleve',
@@ -16,7 +17,10 @@ export class LoginEleveComponent implements OnInit {
   loginEleveForm!: FormGroup;
   message: string = '';
 
-  constructor(private loginEleveService: LoginEleveService, private authguardValidationService: AuthguardValidationService, private route: Router) {}
+  constructor(private loginEleveService: LoginEleveService,
+              private authguardValidationService: AuthguardValidationService,
+              private route: Router,
+              private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loginEleveForm = new FormGroup({
@@ -24,7 +28,7 @@ export class LoginEleveComponent implements OnInit {
       password: new FormControl('')
     });
     
-    redirect(this.authguardValidationService, this.route);
+    redirect(this.authguardValidationService, this.route, this.authService);
   }
 
   login() {
@@ -46,7 +50,7 @@ export class LoginEleveComponent implements OnInit {
         return;
       }
 
-      localStorage.setItem("token", response.token);
+      this.authService.setToken(response.token);
       this.route.navigate(["eleve-dashboard"]);
     });
   }
