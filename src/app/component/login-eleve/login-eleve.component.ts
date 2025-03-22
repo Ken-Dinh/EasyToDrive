@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { LoginEleveService } from '../../service/login-eleve.service';
 import { Eleve } from '../../model/eleve';
 import { Router } from '@angular/router';
+import { AuthguardValidationService } from '../../service/authguard-validation.service';
+import { redirect } from '../../model/redirect';
 
 @Component({
   selector: 'app-login-eleve',
@@ -14,13 +16,15 @@ export class LoginEleveComponent implements OnInit {
   loginEleveForm!: FormGroup;
   message: string = '';
 
-  constructor(private loginEleveService: LoginEleveService, private route: Router) {}
+  constructor(private loginEleveService: LoginEleveService, private authguardValidationService: AuthguardValidationService, private route: Router) {}
 
   ngOnInit(): void {
     this.loginEleveForm = new FormGroup({
       login: new FormControl(''),
       password: new FormControl('')
     });
+    
+    redirect(this.authguardValidationService, this.route);
   }
 
   login() {

@@ -9,7 +9,7 @@
         <div class="d-flex align-items-center bg-warning p-2 rounded">
           <label class="me-2">Sélectionnez la table à voir :</label>
           <select class="form-select w-auto" (change)="changeTable($event)">
-            <option *ngFor="let table of tables" [value]="table.key">{{ table.label }}</option>
+            <option *ngFor="let table of tables" [value]="table.key">{{ table.label | titlecase }}</option>
           </select>
         </div>
       </div>

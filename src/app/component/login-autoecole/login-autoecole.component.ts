@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { LoginAutoecoleService } from '../../service/login-autoecole.service';
 import { Router } from '@angular/router';
 import { AutoEcole } from '../../model/auto-ecole';
+import { redirect } from '../../model/redirect';
+import { AuthguardValidationService } from '../../service/authguard-validation.service';
 
 @Component({
   selector: 'app-login-autoecole',
@@ -14,13 +16,14 @@ export class LoginAutoecoleComponent {
 loginAutoecoleForm!: FormGroup;
   message: string = '';
 
-  constructor(private loginAdminService: LoginAutoecoleService, private route: Router) {}
+  constructor(private loginAdminService: LoginAutoecoleService, private authguardValidationService: AuthguardValidationService, private route: Router) {}
 
   ngOnInit(): void {
     this.loginAutoecoleForm = new FormGroup({
       login: new FormControl(''),
       password: new FormControl('')
     });
+    redirect(this.authguardValidationService, this.route);
   }
 
   login() {

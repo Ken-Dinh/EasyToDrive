@@ -34,6 +34,7 @@ import { CardComponent } from './component/card/card.component';
 import { TableComponent } from './component/table/table.component';
 import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component';
 import { registerLocaleData } from '@angular/common';
+import { ReplaceCharPipe } from './pipe/replacechar.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { registerLocaleData } from '@angular/common';
     PutTestComponent,
     CardComponent,
     TableComponent,
-    Voiture3DComponent
+    Voiture3DComponent,
+    ReplaceCharPipe
 
   ],
   imports: [
