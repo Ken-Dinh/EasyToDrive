@@ -16,7 +16,7 @@ type TableKey = 'eleves' | 'examens' | 'tests' | 'simulation';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-
+  
   formatDateFr(date: string) {
     return formatDate(date, "longDate", "fr");
   }
@@ -28,7 +28,7 @@ export class AdminDashboardComponent {
   listeExamen: Examen[] = [{
     examen_id: 99,
     date: this.formatTimestampFr("2025-05-29 08:20:50"),
-    score: 17.5
+    score: 17.5,
   }];
 
   listeTest: Test[] = [{
@@ -123,9 +123,43 @@ export class AdminDashboardComponent {
 
   onDelete(item: any) {
     console.log('Élément à supprimer :', item);
-    // Ajoutez ici la logique pour supprimer l'élément
+    
+  }
+/*
+  showDeletePopup = false; 
+  itemToDelete: any; 
+
+  
+  openDeletePopup(item: any) {
+    this.itemToDelete = item;
+    this.showDeletePopup = true;
   }
 
+  
+  onDeleteConfirmed() {
+    
+    switch (this.selectedTable) {
+      case 'eleves':
+        this.listeEleve = this.listeEleve.filter(e => e.id !== this.itemToDelete.id);
+        break;
+      case 'examens':
+        this.listeExamen = this.listeExamen.filter(e => e.id !== this.itemToDelete.id);
+        break;
+      case 'tests':
+        this.listeTest = this.listeTest.filter(e => e.id !== this.itemToDelete.id);
+        break;
+      case 'simulation':
+        this.listeSimulation = this.listeSimulation.filter(e => e.id !== this.itemToDelete.id);
+        break;
+    }
+    this.showDeletePopup = false; 
+  }
+
+  
+  onDeleteCancelled() {
+    this.showDeletePopup = false; 
+  }
+*/
   onEdit(item: any) {
     console.log('Élément à modifier :', item);
     // Ajoutez ici la logique pour modifier l'élément

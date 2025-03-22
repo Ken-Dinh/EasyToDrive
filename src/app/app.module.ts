@@ -36,6 +36,7 @@ import { Voiture3DComponent } from './component/voiture3-d/voiture3-d.component'
 import { registerLocaleData } from '@angular/common';
 import { ReplaceCharPipe } from './pipe/replacechar.pipe';
 import { LogoutComponent } from './component/logout/logout.component';
+import { DeletePopupComponent } from './component/delete-popup/delete-popup.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { LogoutComponent } from './component/logout/logout.component';
     TableComponent,
     Voiture3DComponent,
     ReplaceCharPipe,
-    LogoutComponent
+    LogoutComponent,
+    DeletePopupComponent
 
   ],
   imports: [
