@@ -4,6 +4,16 @@
   <form [formGroup]="addTestForm" class="container mx-auto py-3">
 
     <div class="formGroup">
+      <label for="examen_id">Examen:</label>
+      <div class="input-group">
+        <select class="custom-select" id="examenSelect" formControlName="examen_id">
+          <option selected>Choisir une option...</option>
+          <option value="{{item.examen_id}}" *ngFor="let item of listeExamen">{{item.date}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="formGroup">
       <label for="theme">Theme: </label>
       <input type="text" id="theme" formControlName="theme" class="form-control"/>
     </div>
@@ -19,6 +29,8 @@
     </div>
       
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="addTest()">Valider</button>
+    <h5 *ngIf="message == 'Test ajouté avec succès'" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="message != 'Test ajouté avec succès'" class="text-danger">{{ message }}</h5>
   </form>
 </div>
 
