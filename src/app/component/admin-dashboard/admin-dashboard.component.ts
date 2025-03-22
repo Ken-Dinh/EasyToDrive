@@ -73,23 +73,7 @@ export class AdminDashboardComponent {
     { key: 'simulation', label: 'Simulations' }
   ];
 
-  // Données de test
-  listeEleve = [
-    { id: 1, nom: 'Liam', prenom: 'Cheurfa' },
-    { id: 2, nom: 'Jean', prenom: 'Dupont' }
-  ];
-  listeExamen = [
-    { id: 1, nom: 'Examen 1', date: '2023-01-01' },
-    { id: 2, nom: 'Examen 2', date: '2023-02-01' }
-  ];
-  listeTest = [
-    { id: 1, nom: 'Test 1', score: 80 },
-    { id: 2, nom: 'Test 2', score: 90 }
-  ];
-  listeSimulation = [
-    { id: 1, nom: 'Simulation 1', resultat: 'Réussi' },
-    { id: 2, nom: 'Simulation 2', resultat: 'Échoué' }
-  ];
+  
 
   // Mapping pour les routes d'ajout
   routeMappingAdd: Record<TableKey, string> = {
