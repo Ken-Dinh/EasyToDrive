@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,10 +7,17 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  @Input() data: any[] = []; 
+  @Input() data: any[] = [];
+  @Input() selectedTable: string = '';
+  @Input() getPutRoute!: (item: any) => string; // Méthode pour générer la route de modification
+  @Output() delete = new EventEmitter<any>();
+  @Output() edit = new EventEmitter<any>();
 
-  
   getKeys(obj: any): string[] {
     return Object.keys(obj);
+  }
+
+  deleteItem(item: any) {
+    this.delete.emit(item);
   }
 }

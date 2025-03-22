@@ -32,10 +32,10 @@ const routes: Routes = [
   {path: "add-test", component: AddTestComponent, canActivate: [adminAuthGuard]},
   {path: "add-avis", component: AddAvisComponent},
   {path: "add-simulation", component: AddSimulationComponent, canActivate: [adminAuthGuard]},
-  {path: "put-eleve", component: PutEleveComponent, canActivate: [adminAuthGuard]},
-  {path: "put-examen", component: PutExamenComponent, canActivate: [adminAuthGuard]},
-  {path: "put-test", component: PutTestComponent, canActivate: [adminAuthGuard]},
-  {path: "put-simulation", component: PutSimulationComponent, canActivate: [adminAuthGuard]}
+  {path: "put-eleve/:id", component: PutEleveComponent, canActivate: [adminAuthGuard]},
+  {path: "put-examen/:id", component: PutExamenComponent, canActivate: [adminAuthGuard]},
+  {path: "put-test/:id", component: PutTestComponent, canActivate: [adminAuthGuard]},
+  {path: "put-simulation/:id", component: PutSimulationComponent, canActivate: [adminAuthGuard]}
   
 ];
 

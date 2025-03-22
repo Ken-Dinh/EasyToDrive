@@ -5,11 +5,14 @@ import { Simulation } from '../../model/simulation';
 import { Eleve } from '../../model/eleve';
 import { Avis } from '../../model/avis';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
+
+type TableKey = 'eleves' | 'examens' | 'tests' | 'simulation';
 
 @Component({
   selector: 'app-admin-dashboard',
-  standalone: false,
   templateUrl: './admin-dashboard.component.html',
+  standalone: false,
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
@@ -61,34 +64,70 @@ export class AdminDashboardComponent {
     date_publication: this.formatTimestampFr("2025-03-12 08:20:50"),
   }];
 
-  selectedTable: string = 'eleves';
+  
+  selectedTable: TableKey = 'eleves';
   tables = [
     { key: 'eleves', label: 'Élèves' },
-    { key: 'avis', label: 'Avis' },
     { key: 'examens', label: 'Examens' },
     { key: 'tests', label: 'Tests' },
-    { key: 'simulations', label: 'Simulations' }
+    { key: 'simulation', label: 'Simulations' }
   ];
 
+  
+
+  // Mapping pour les routes d'ajout
+  routeMappingAdd: Record<TableKey, string> = {
+    eleves: 'add-eleve',
+    examens: 'add-examen',
+    tests: 'add-test',
+    simulation: 'add-simulation'
+  };
+
+  // Mapping pour les routes de modification
+  routeMappingPut: Record<TableKey, string> = {
+    eleves: 'put-eleve',
+    examens: 'put-examen',
+    tests: 'put-test',
+    simulation: 'put-simulation'
+  };
+
+  constructor(private router: Router) {}
+
   changeTable(event: Event) {
-    const target = event.target as HTMLSelectElement; 
-    this.selectedTable = target.value; 
+    const target = event.target as HTMLSelectElement;
+    this.selectedTable = target.value as TableKey;
+  }
+
+  getAddRoute(): string {
+    return `/${this.routeMappingAdd[this.selectedTable]}`;
+  }
+
+  getPutRoute(item: any): string {
+    return `/${this.routeMappingPut[this.selectedTable]}/${item.id}`;
   }
 
   getSelectedTableData() {
     switch (this.selectedTable) {
       case 'eleves':
         return this.listeEleve;
-      case 'avis':
-        return this.listeAvis;
       case 'examens':
         return this.listeExamen;
       case 'tests':
         return this.listeTest;
-      case 'simulations':
+      case 'simulation':
         return this.listeSimulation;
       default:
         return [];
     }
+  }
+
+  onDelete(item: any) {
+    console.log('Élément à supprimer :', item);
+    // Ajoutez ici la logique pour supprimer l'élément
+  }
+
+  onEdit(item: any) {
+    console.log('Élément à modifier :', item);
+    // Ajoutez ici la logique pour modifier l'élément
   }
 }
