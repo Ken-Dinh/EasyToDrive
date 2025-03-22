@@ -15,7 +15,15 @@ export class SimulationService {
     return this.http.get<Simulation[]>(this.apiUrl);
   }
 
+  getSimulationById(id: number) {
+    return this.http.get<Simulation[]>(`${this.apiUrl}?id=${id}`);
+  }
+
   postSimulation(data: Simulation) {
     return this.http.post(this.apiUrl, data);
+  }
+
+  putSimulation(data: Simulation) {
+    return this.http.put(this.apiUrl, data);
   }
 }

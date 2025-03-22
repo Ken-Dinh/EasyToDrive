@@ -9,7 +9,6 @@
     $conn = $db->connect();
     $request = $_SERVER["REQUEST_METHOD"];
     $data = json_decode(file_get_contents("php://input"), true);
-
     function deleteEleve($id) {
         global $conn;
 
@@ -135,31 +134,28 @@
         }
     }
 
-    switch ($request) {
-        case "PUT":
+    if  ($request != "DELETE") {
+        echo json_encode(["message" => "Invalid request method"]);
+        exit;
+    }
+            
+    switch ($data["table"]) {
+        case "eleve":
+            deleteEleve($data["id"]);
             break;
-        case "DELETE";
-            switch ($data["table"]) {
-                case "eleve":
-                    deleteEleve($data["id"]);
-                    break;
-                case "examen":
-                    deleteExamen($data["id"]);
-                    break;
-                case "test":
-                    deleteTest($data["id"]);
-                    break;
-                case "simulation";
-                    deleteSimulation($data["id"]);
-                    break;
-                default:
-                    echo json_encode(["message" => "Table invalide"]);
-                    break;
-            };
+        case "examen":
+            deleteExamen($data["id"]);
+            break;
+        case "test":
+            deleteTest($data["id"]);
+            break;
+        case "simulation";
+            deleteSimulation($data["id"]);
             break;
         default:
-            echo json_encode(["message" => "Invalid request method"]);
+            echo json_encode(["message" => "Table invalide"]);
             break;
-    }
+    };
+
 
 ?>

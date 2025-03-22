@@ -1,17 +1,24 @@
 <div class="container mt-5">
   <h2>Modifier un examen</h2>
-  <form [formGroup]="putExamenForm" class="container mx-auto py-3" *ngFor="let examen of listeExamen; let i = index">
+  <form [formGroup]="putExamenForm" class="container mx-auto py-3">
     
     <div class="formGroup">
-      <label for="score{{i}}">Score:</label>
-      <input type="number" step="0.25" id="score{{i}}" formControlName="score" class="form-control" placeholder="{{ examen.score }}" />
+      <label for="examen_id">ID:</label>
+      <input type="number" id="examen_id" formControlName="examen_id" class="form-control" [value]="examen.examen_id" />
     </div>
 
     <div class="formGroup">
-      <label for="date{{i}}">Date de passage:</label>
-      <input type="date" id="date{{i}}" formControlName="date" class="form-control" placeholder="{{ examen.date }}" />
+      <label for="score">Score:</label>
+      <input type="number" step="0.25" id="score" formControlName="score" class="form-control" [value]="examen.score" />
+    </div>
+
+    <div class="formGroup">
+      <label for="date">Date de passage:</label>
+      <input type="datetime-local" id="date" formControlName="date" class="form-control" [value]="examen.date" />
     </div>
 
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putExamen()">Valider</button>
+    <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
   </form>
 </div>

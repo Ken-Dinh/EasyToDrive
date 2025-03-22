@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Simulation } from '../../model/simulation';
+import { SimulationService } from '../../service/simulation.service';
+import { ActivatedRoute } from '@angular/router';
+import { ExamenService } from '../../service/examen.service';
+import { Examen } from '../../model/examen';
 
 @Component({
   selector: 'app-put-simulation',
@@ -8,28 +13,57 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./put-simulation.component.css']
 })
 export class PutSimulationComponent implements OnInit {
-  
   putSimulationForm!: FormGroup;
-
+  simulationId!: number;
+  listeExamen: Examen[] = [];
+  message: string = "";
+  simulation: Simulation = {};
   
-  listeSimulation = [{
-    simulation_id: 402,
-    date: "2023-11-14",
-    validation: true
-  }];
-
+  constructor(private simulationService: SimulationService, private examenService: ExamenService, private route: ActivatedRoute) {}
   
   ngOnInit(): void {
     this.putSimulationForm = new FormGroup({
-      date: new FormControl(this.listeSimulation[0].date),       
-      validation: new FormControl(this.listeSimulation[0].validation) 
+      simulation_id: new FormControl({value: "", disabled: true}),
+      examen_id: new FormControl(""),
+      date: new FormControl(""),
+      validation: new FormControl(false)
+    });
+
+    this.route.params.subscribe(params => {
+      this.simulationId = +params["id"];
+      this.getSimulationById(this.simulationId);
+    })
+
+    this.getExamen();
+  }
+
+  getExamen() {
+    this.examenService.getExamen().subscribe((response: any) => {
+      this.listeExamen = response.examen;
     });
   }
 
-  
+  setSimulationForm() {
+    this.putSimulationForm = new FormGroup({
+      simulation_id: new FormControl({value: this.simulation.simulation_id, disabled: true}),
+      examen_id: new FormControl(this.simulation.examen_id),
+      date: new FormControl(this.simulation.date),
+      validation: new FormControl(this.simulation.validation)
+    });
+  }
+
+  getSimulationById(id: number) {
+    this.simulationService.getSimulationById(id).subscribe((response: any) => {
+      this.simulation = response.simulation;
+      this.setSimulationForm();
+    });
+  }
+
   putSimulation() {
-    const date = this.putSimulationForm.get("date")?.value;
-    const validation = this.putSimulationForm.get("validation")?.value;
-    console.log({ date, validation }); 
+    const _simulation: Simulation = this.putSimulationForm.getRawValue();
+
+    this.simulationService.putSimulation(_simulation).subscribe((response: any) => {
+      this.message = response.message;
+    });
   }
 }

@@ -15,8 +15,16 @@ export class ExamenService {
     return this.http.get<Examen[]>(this.apiUrl);
   }
 
+  getExamenById(id: number) {
+    return this.http.get<Examen[]>(`${this.apiUrl}?id=${id}`);
+  }
+
   postExamen(data: Examen) {
     return this.http.post(this.apiUrl, data);
+  }
+
+  putExamen(data: Examen) {
+    return this.http.put(this.apiUrl, data);
   }
   
 }

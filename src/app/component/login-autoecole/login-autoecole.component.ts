@@ -50,7 +50,7 @@ loginAutoecoleForm!: FormGroup;
       }
 
       this.authService.setToken(response.token);
-      // this.route.navigate(["autoecole-dashboard"]);
+      this.route.navigate(["autoecole-dashboard"]);
     });
     
   }

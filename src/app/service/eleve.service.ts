@@ -15,15 +15,15 @@ export class EleveService {
     return this.http.get<Eleve[]>(this.apiUrl);
   }
 
+  getEleveById(id: number) {
+    return this.http.get<Eleve[]>(`${this.apiUrl}?id=${id}`);
+  }
+
   postEleve(data: Eleve) {
     return this.http.post(this.apiUrl, data);
   }
 
   putEleve(data: Eleve) {
     return this.http.put(this.apiUrl, data);
-  }
-
-  deleteEleve(data: Eleve) {
-    return this.http.delete(this.apiUrl, { body: data });
   }
 }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Test } from '../../model/test';
+import { TestService } from '../../service/test.service';
+import { ActivatedRoute } from '@angular/router';
+import { ExamenService } from '../../service/examen.service';
+import { Examen } from '../../model/examen';
 
 @Component({
   selector: 'app-put-test',
@@ -8,31 +13,59 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./put-test.component.css']
 })
 export class PutTestComponent implements OnInit {
-  
   putTestForm!: FormGroup;
+  testId!: number;
+  listeExamen: Examen[] = [];
+  message: string = "";
+  test: Test = {};
 
-  
-  listeTest = [{
-    test_id: 13,
-    date: "2023-11-14",
-    score: 12.5,
-    theme: "Signalisation"
-  }];
-
+  constructor(private testService: TestService, private examenService: ExamenService, private route: ActivatedRoute) {}
   
   ngOnInit(): void {
     this.putTestForm = new FormGroup({
-      score: new FormControl(this.listeTest[0].score), 
-      date: new FormControl(this.listeTest[0].date),   
-      theme: new FormControl(this.listeTest[0].theme)  
+      test_id: new FormControl({value: "", disabled: true}),
+      examen_id: new FormControl(""),
+      theme: new FormControl(""),
+      date: new FormControl(""),
+      score: new FormControl("")
+    });
+
+    this.route.params.subscribe(params => {
+      this.testId = +params["id"];
+      this.getTestById(this.testId);
+    })
+
+    this.getExamen();
+  }
+
+  getExamen() {
+    this.examenService.getExamen().subscribe((response: any) => {
+      this.listeExamen = response.examen;
     });
   }
 
+  setTestForm() {
+    this.putTestForm = new FormGroup({
+      test_id: new FormControl({value: this.test.test_id, disabled: true}),
+      examen_id: new FormControl(this.test.examen_id),
+      theme: new FormControl(this.test.theme),
+      date: new FormControl(this.test.date),
+      score: new FormControl(this.test.score)
+    });
+  }
+
+  getTestById(id: number) {
+    this.testService.getTestById(id).subscribe((response: any) => {
+      this.test = response.test;
+      this.setTestForm();
+    });
+  }
  
   putTest() {
-    const score = this.putTestForm.get("score")?.value;
-    const date = this.putTestForm.get("date")?.value;
-    const theme = this.putTestForm.get("theme")?.value;
-    console.log({ score, date, theme }); 
+    const _test: Test = this.putTestForm.getRawValue();
+
+    this.testService.putTest(_test).subscribe((response: any) => {
+      this.message = response.message;
+    });
   }
 }

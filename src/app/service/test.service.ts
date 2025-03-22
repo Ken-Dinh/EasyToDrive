@@ -15,7 +15,15 @@ export class TestService {
     return this.http.get<Test[]>(this.apiUrl);
   }
 
+  getTestById(id: number) {
+    return this.http.get<Test[]>(`${this.apiUrl}?id=${id}`);
+  }
+
   postTest(data: Test) {
     return this.http.post(this.apiUrl, data);
+  }
+
+  putTest(data: Test) {
+    return this.http.put(this.apiUrl, data);
   }
 }

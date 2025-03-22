@@ -1,57 +1,74 @@
 <div class="container mt-5">
   <h2>Modifier un élève</h2>
-  <form [formGroup]="putEleveForm" class="container mx-auto py-3" *ngFor="let eleve of listeEleve; let i = index">
+  <form [formGroup]="putEleveForm" class="container mx-auto py-3">
     
     <div class="formGroup">
-      <label for="login{{i}}">Login:</label>
-      <input type="text" id="login{{i}}" formControlName="login" class="form-control" placeholder="{{ eleve.login }}" />
+      <label for="eleve_id">ID:</label>
+      <input type="number" id="eleve_id" formControlName="eleve_id" class="form-control" [value]="eleve.eleve_id"/>
+    </div>
+
+    <div class="formGroup">
+      <label for="login">Login:</label>
+      <input type="text" id="login" formControlName="login" class="form-control" [value]="eleve.login" />
     </div>
     
     <div class="formGroup">
-      <label for="password{{i}}">Mot de passe:</label>
-      <input type="text" id="password{{i}}" formControlName="password" class="form-control" placeholder="{{ eleve.password }}" />
+      <label for="password">Mot de passe:</label>
+      <input type="text" id="password" formControlName="password" class="form-control" />
+    </div>
+
+    <div class="formGroup">
+      <label for="autoecole_id">Auto-Ecole:</label>
+      <div class="input-group">
+        <select class="custom-select" id="autoecoleSelect" formControlName="autoecole_id">
+          <option selected>Choisir une option...</option>
+          <option value="{{item.autoecole_id}}" [value]="item.autoecole_id" *ngFor="let item of listeAutoEcole">{{item.nom}}</option>
+        </select>
+      </div>
     </div>
     
     <div class="formGroup">
-      <label for="birthday{{i}}">Date de Naissance:</label>
-      <input type="date" id="birthday{{i}}" formControlName="birthday" class="form-control" placeholder="{{ eleve.naissance }}" />
+      <label for="naissance">Date de Naissance:</label>
+      <input type="date" id="naissance" formControlName="naissance" class="form-control" [value]="eleve.naissance" />
     </div>
    
     <div class="formGroup">
-      <label for="rue{{i}}">Rue:</label>
-      <input type="text" id="rue{{i}}" formControlName="rue" class="form-control" placeholder="{{ eleve.rue }}" />
+      <label for="rue">Rue:</label>
+      <input type="text" id="rue" formControlName="rue" class="form-control" [value]="eleve.rue" />
     </div>
     
     <div class="formGroup">
-      <label for="cp{{i}}">Code Postal:</label>
-      <input type="text" id="cp{{i}}" formControlName="cp" class="form-control" placeholder="{{ eleve.cp }}" />
+      <label for="cp">Code Postal:</label>
+      <input type="number" id="cp" formControlName="cp" class="form-control" [value]="eleve.cp" />
     </div>
     
     <div class="formGroup">
-      <label for="ville{{i}}">Ville:</label>
-      <input type="text" id="ville{{i}}" formControlName="ville" class="form-control" placeholder="{{ eleve.ville }}" />
+      <label for="ville">Ville:</label>
+      <input type="text" id="ville" formControlName="ville" class="form-control" [value]="eleve.ville" />
     </div>
 
     <div class="formGroup">
-      <label for="dateInscription{{i}}">Date d'inscription:</label>
-      <input type="date" id="dateInscription{{i}}" formControlName="dateInscription" class="form-control" placeholder="{{ eleve.date_inscription }}" />
+      <label for="date_inscription">Date d'inscription:</label>
+      <input type="datetime-local" id="date_inscription" formControlName="date_inscription" class="form-control" [value]="eleve.date_inscription" />
     </div>
 
     <div class="formGroup">
-      <label for="neph{{i}}">Code Neph:</label>
-      <input type="text" id="neph{{i}}" formControlName="neph" class="form-control" placeholder="{{ eleve.neph }}" />
+      <label for="neph">Code Neph:</label>
+      <input type="text" id="neph" formControlName="neph" class="form-control" [value]="eleve.neph" />
     </div>
     
     <div class="formGroup">
-      <label for="etg{{i}}">Note ETG:</label>
-      <input type="text" id="etg{{i}}" formControlName="etg" class="form-control" placeholder="{{ eleve.note_etg }}" />
+      <label for="note_etg">Note ETG:</label>
+      <input type="text" id="note_etg" formControlName="note_etg" class="form-control" [value]="eleve.note_etg" />
     </div>
     
     <div class="formGroup">
-      <label for="valietg{{i}}">Validation ETG:</label>
-      <input type="checkbox" id="valietg{{i}}" formControlName="valietg" class="form-check-input mx-3" />
+      <label for="validation_etg">Validation ETG:</label>
+      <input type="checkbox" id="validation_etg" formControlName="validation_etg" class="form-check-input mx-3" />
     </div>
 
     <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="putEleve()">Valider</button>
+    <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+    <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
   </form>
 </div>

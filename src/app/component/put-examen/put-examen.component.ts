@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Examen } from '../../model/examen';
+import { ExamenService } from '../../service/examen.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-put-examen',
@@ -8,28 +11,46 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./put-examen.component.css']
 })
 export class PutExamenComponent implements OnInit {
-  
   putExamenForm!: FormGroup;
+  examenId!: number;
+  message: string = "";
+  examen: Examen = {};
 
-  
-  listeExamen = [{
-    examen_id: 99,
-    date: "2025-11-29",
-    score: 17.5
-  }];
-
+  constructor(private examenService: ExamenService, private route: ActivatedRoute) {}
   
   ngOnInit(): void {
     this.putExamenForm = new FormGroup({
-      score: new FormControl(this.listeExamen[0].score), 
-      date: new FormControl(this.listeExamen[0].date)   
+      examen_id: new FormControl({disabled: true}),
+      score: new FormControl(""), 
+      date: new FormControl("")   
+    });
+
+    this.route.params.subscribe(params => {
+      this.examenId = +params["id"];
+      this.getExamenById(this.examenId);
+    })
+  }
+
+  setExamenForm() {
+    this.putExamenForm = new FormGroup({
+      examen_id: new FormControl({value: this.examen.examen_id, disabled: true}),
+      score: new FormControl(this.examen.score), 
+      date: new FormControl(this.examen.date)   
     });
   }
 
-  
+  getExamenById(id: number) {
+    this.examenService.getExamenById(id).subscribe((response: any) => {
+      this.examen = response.examen;
+      this.setExamenForm();
+    });
+  }
+
   putExamen() {
-    const score = this.putExamenForm.get("score")?.value;
-    const date = this.putExamenForm.get("date")?.value;
-    console.log({ score, date }); 
+    const _examen: Examen = this.putExamenForm.getRawValue();
+
+    this.examenService.putExamen(_examen).subscribe((response: any) => {
+      this.message = response.message;
+    });
   }
 }

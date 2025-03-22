@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { EleveService } from '../../service/eleve.service';
 import { Eleve } from '../../model/eleve';
+import { AutoEcole } from '../../model/auto-ecole';
+import { AutoecoleService } from '../../service/autoecole.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-put-eleve',
@@ -10,55 +13,73 @@ import { Eleve } from '../../model/eleve';
   styleUrls: ['./put-eleve.component.css']
 })
 export class PutEleveComponent implements OnInit {
-  
   putEleveForm!: FormGroup;
+  eleveId!: number;
+  listeAutoEcole: AutoEcole[] = [];
+  message: string = "";
+  eleve: Eleve = {};
 
-  listeEleve: Eleve[] = [{
-      eleve_id: 29,
-      login: "liam.cheurfa",
-      password: "liam12",
-      naissance: "2005-03-29",
-      rue: "51 rue jean jaurès",
-      cp: 93470,
-      ville: "Coubron",
-      date_inscription: "2023-08-21",
-      neph: "563899279407",
-      note_etg: "14.5",
-      validation_etg: true,
-      
-    }]
+  constructor(private eleveService: EleveService, private autoEcoleService: AutoecoleService, private route: ActivatedRoute) {}
 
-  constructor(private eleveService: EleveService) {}
-
-  
   ngOnInit(): void {
     this.putEleveForm = new FormGroup({
-      login: new FormControl(this.listeEleve[0].login),
-      password: new FormControl(this.listeEleve[0].password),
-      birthday: new FormControl(this.listeEleve[0].naissance),
-      rue: new FormControl(this.listeEleve[0].rue),
-      cp: new FormControl(this.listeEleve[0].cp),
-      ville: new FormControl(this.listeEleve[0].ville),
-      dateInscription: new FormControl(this.listeEleve[0].date_inscription),
-      neph: new FormControl(this.listeEleve[0].neph),
-      etg: new FormControl(this.listeEleve[0].note_etg),
-      valietg: new FormControl(this.listeEleve[0].validation_etg)
+      eleve_id: new FormControl({value: "", disabled: true}),
+      login: new FormControl(""),
+      password: new FormControl(""),
+      autoecole_id: new FormControl(""),
+      naissance: new FormControl(""),
+      rue: new FormControl(""),
+      cp: new FormControl(""),
+      ville: new FormControl(""),
+      date_inscription: new FormControl(""),
+      neph: new FormControl(""),
+      note_etg: new FormControl(""),
+      validation_etg: new FormControl(false)
+    });
+    
+    this.route.params.subscribe(params => {
+      this.eleveId = +params["id"];
+      this.getEleveById(this.eleveId);
+    });
+
+    this.getAutoecole();
+  }
+
+  getAutoecole() {
+    this.autoEcoleService.getAutoEcole().subscribe((response: any) => {
+      this.listeAutoEcole = response.autoecole;
     });
   }
 
+  setEleveForm() {
+    this.putEleveForm = new FormGroup({
+      eleve_id: new FormControl({value: this.eleve.eleve_id, disabled: true}),
+      login: new FormControl(this.eleve.login),
+      password: new FormControl(""),
+      autoecole_id: new FormControl(this.eleve.autoecole_id),
+      naissance: new FormControl(this.eleve.naissance),
+      rue: new FormControl(this.eleve.rue),
+      cp: new FormControl(this.eleve.cp),
+      ville: new FormControl(this.eleve.ville),
+      date_inscription: new FormControl(this.eleve.date_inscription),
+      neph: new FormControl(this.eleve.neph),
+      note_etg: new FormControl(this.eleve.note_etg),
+      validation_etg: new FormControl(this.eleve.validation_etg)
+    });
+  }
+
+  getEleveById(id: number) {
+    this.eleveService.getEleveById(id).subscribe((response: any) => {
+      this.eleve = response.eleve;
+      this.setEleveForm();
+    });
+  }
   
   putEleve() {
-    const login = this.putEleveForm.get("login")?.value;
-    const password = this.putEleveForm.get("password")?.value;
-    const birthday = this.putEleveForm.get("birthday")?.value;
-    const rue = this.putEleveForm.get("rue")?.value;
-    const cp = this.putEleveForm.get("cp")?.value;
-    const ville = this.putEleveForm.get("ville")?.value;
-    const dateInscription = this.putEleveForm.get("dateInscription")?.value;
-    const neph = this.putEleveForm.get("neph")?.value;
-    const etg = this.putEleveForm.get("etg")?.value;
-    const valietg = this.putEleveForm.get("valietg")?.value;
+    const _eleve: Eleve = this.putEleveForm.getRawValue();
 
-    console.log({ login, password, birthday, rue, cp, ville, dateInscription, neph, etg, valietg });
+    this.eleveService.putEleve(_eleve).subscribe((response: any) => {
+      this.message = response.message;
+    });
   }
 }

@@ -10,10 +10,6 @@ export class ControllerService {
 
   constructor(private http: HttpClient) { }
 
-  put(data: any) {
-    return this.http.put(this.apiUrl, data);
-  }
-
   delete(data: any) {
     return this.http.delete(this.apiUrl, { body: data });
   }

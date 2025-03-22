@@ -10,7 +10,7 @@ import { ExamenService } from '../../service/examen.service';
 import { SimulationService } from '../../service/simulation.service';
 import { EleveService } from '../../service/eleve.service';
 import { TestService } from '../../service/test.service';
-import { ControllerService } from '../../service/controller.service';
+import { ControllerService } from '../../service/delete_controller.service';
 
 type TableKey = 'eleve' | 'examen' | 'test' | 'simulation';
 
@@ -84,6 +84,7 @@ export class AdminDashboardComponent implements OnInit {
     this.eleveService.getEleve().subscribe((response: any) => {
       this.listeEleve = this.formatListTimestamps(response.eleve, "date_inscription");
       this.listeEleve = this.formatListDates(this.listeEleve, "naissance");
+      this.listeEleve = this.listeEleve.map(({password, ...rest}) => rest);
     });
   }
 
@@ -139,7 +140,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getPutRoute(item: any): string {
-    return `/${this.routeMappingPut[this.selectedTable]}/${item.id}`;
+    return `/${this.routeMappingPut[this.selectedTable]}/${item[this.idFieldMapping[this.selectedTable]]}`;
   }
 
   getSelectedTableData() {
@@ -159,7 +160,7 @@ export class AdminDashboardComponent implements OnInit {
 
   onEdit(item: any) {
     console.log('Élément à modifier :', item);
-    // Ajoutez ici la logique pour supprimer l'élément
+    // Ajoutez ici la logique pour modifier l'élément
   }
 
   onDelete(item: any) {
@@ -196,39 +197,20 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-/*
   showDeletePopup = false; 
   itemToDelete: any; 
 
-  
   openDeletePopup(item: any) {
     this.itemToDelete = item;
     this.showDeletePopup = true;
   }
 
-  
   onDeleteConfirmed() {
-    
-    switch (this.selectedTable) {
-      case 'eleves':
-        this.listeEleve = this.listeEleve.filter(e => e.id !== this.itemToDelete.id);
-        break;
-      case 'examens':
-        this.listeExamen = this.listeExamen.filter(e => e.id !== this.itemToDelete.id);
-        break;
-      case 'tests':
-        this.listeTest = this.listeTest.filter(e => e.id !== this.itemToDelete.id);
-        break;
-      case 'simulation':
-        this.listeSimulation = this.listeSimulation.filter(e => e.id !== this.itemToDelete.id);
-        break;
-    }
-    this.showDeletePopup = false; 
+    this.onDelete(this.itemToDelete);
   }
-
   
   onDeleteCancelled() {
     this.showDeletePopup = false; 
   }
-*/
+
 }
