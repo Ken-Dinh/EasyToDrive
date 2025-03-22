@@ -16,6 +16,7 @@ import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashb
 import { LoginAutoecoleComponent } from './component/login-autoecole/login-autoecole.component';
 import { EleveDashboardComponent } from './component/eleve-dashboard/eleve-dashboard.component';
 import { AddAvisComponent } from './component/add-avis/add-avis.component';
+import { AutoEcoleDashboardComponent } from './component/autoecole-dashboard/autoecole-dashboard.component';
 
 
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path: "put-eleve/:id", component: PutEleveComponent, canActivate: [adminAuthGuard]},
   {path: "put-examen/:id", component: PutExamenComponent, canActivate: [adminAuthGuard]},
   {path: "put-test/:id", component: PutTestComponent, canActivate: [adminAuthGuard]},
-  {path: "put-simulation/:id", component: PutSimulationComponent, canActivate: [adminAuthGuard]}
+  {path: "put-simulation/:id", component: PutSimulationComponent, canActivate: [adminAuthGuard]},
+  {path: "autoecole-dashboard", component: AutoEcoleDashboardComponent}
   
 ];
 

@@ -37,6 +37,7 @@ import { registerLocaleData } from '@angular/common';
 import { ReplaceCharPipe } from './pipe/replacechar.pipe';
 import { LogoutComponent } from './component/logout/logout.component';
 import { DeletePopupComponent } from './component/delete-popup/delete-popup.component';
+import { AutoEcoleDashboardComponent } from './component/autoecole-dashboard/autoecole-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { DeletePopupComponent } from './component/delete-popup/delete-popup.comp
     Voiture3DComponent,
     ReplaceCharPipe,
     LogoutComponent,
-    DeletePopupComponent
+    DeletePopupComponent,
+    AutoEcoleDashboardComponent
 
   ],
   imports: [
