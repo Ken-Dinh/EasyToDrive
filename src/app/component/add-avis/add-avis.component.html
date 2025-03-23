@@ -1,22 +1,12 @@
 <div class="container mt-5">
-    <h2>Ajouter un élève</h2>
-  
-    <!--- 
+    <h2>Ajouter un commentaire</h2>
     <form [formGroup]="addAvisForm" class="container mx-auto py-3">
-      
-        
           <div class="formGroup">
             <label for="avis">Ecriver votre avisaire</label>
-            <input
-              type="text"
-              id="avis"
-              formControlName="avis"
-              class="form-control"
-            />
-          
+            <input type="text" id="avis" formControlName="contenu" class="form-control"/>
         </div>
-  
       <button type="submit" class="col-3 btn btn-primary my-3 mx-3" (click)="addAvis()">Valider</button>
+      <h5 *ngIf="message.includes('succès')" class="text-success">{{ message }}</h5>
+      <h5 *ngIf="!message.includes('succès')" class="text-danger">{{ message }}</h5>
     </form>
-    --->
 </div>

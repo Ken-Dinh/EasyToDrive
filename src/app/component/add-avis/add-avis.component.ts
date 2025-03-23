@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Avis } from '../../model/avis';
+import { AvisService } from '../../service/avis.service';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -10,14 +12,11 @@ import { Avis } from '../../model/avis';
   styleUrl: './add-avis.component.css'
 })
 
-export  class AddAvisComponent {
-
-
-}
-
-/* implements OnInit {
+export  class AddAvisComponent implements OnInit {
   addAvisForm!: FormGroup;
-
+  currentTimestamp: string = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'fr');
+  message: string = '';
+  token: any = localStorage.getItem("token");
 
   constructor(private avisService: AvisService) {}
 
@@ -31,14 +30,12 @@ export  class AddAvisComponent {
     const contenu = this.addAvisForm.get("contenu")?.value;
 
     const _avis: Avis = {
-      eleve_id: 1, 
       contenu: contenu,
-      date_publication: new Date().toISOString() 
+      date_publication: this.currentTimestamp
     }
 
-    console.log(_avis);
-
-    this.avisService.postAvis(_avis).subscribe((data: any) => {
-      alert(data.message);
+    this.avisService.postAvis(_avis, this.token).subscribe((response: any) => {
+      this.message = response.message;
     });
-  }*/
+  }
+}
