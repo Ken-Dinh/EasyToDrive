@@ -52,8 +52,9 @@ npm install
 
 5. Déplacez le dossier api/easytodrive dans le dossier htdocs de XAMPP.
 6. Démarrez le serveur Apache et MySQL à partir du panneau de contrôle XAMPP pour faire tourner l'API.
+7. Allez sur phpmyadmin pour importer la base de données. Elle doit s'appeler "easytodrive".
 
-7. Lancer l'application Angular :
+8. Lancer l'application Angular :
 - Retournez dans le répertoire racine du projet :
     ```bash
     cd ..
