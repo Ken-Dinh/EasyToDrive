@@ -17,11 +17,11 @@ Ce site servira à afficher les statistiques des éléves.
 ## Installation
 
 - Cloner le projet dans un dossier de développement:
-```bash
+```
 git clone https://github.com/Ken-Dinh/EasyToDrive.git
 ```
 
-- Assurez vous d'être dans le dossier root du projet:
+- Assurez-vous d'être dans le dossier root du projet:
 ```bash
 cd EasyToDrive
 ```
@@ -43,15 +43,3 @@ composer require firebase/php-jwt
 ```bash
 ng s
 ```
-
-### Any optional sections
-
-## Usage
-
-```
-
-```
-
-
-## API
-
