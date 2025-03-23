@@ -18,6 +18,7 @@ import { LoginEleveComponent } from './component/login-eleve/login-eleve.compone
 
 import { AdminDashboardComponent } from './component/admin-dashboard/admin-dashboard.component';
 import { EleveDashboardComponent } from './component/eleve-dashboard/eleve-dashboard.component';
+import { AutoEcoleDashboardComponent } from './component/autoecole-dashboard/autoecole-dashboard.component';
 
 import { AddAvisComponent } from './component/add-avis/add-avis.component';
 import { AddEleveComponent } from './component/add-eleve/add-eleve.component';
@@ -37,7 +38,8 @@ import { registerLocaleData } from '@angular/common';
 import { ReplaceCharPipe } from './pipe/replacechar.pipe';
 import { LogoutComponent } from './component/logout/logout.component';
 import { DeletePopupComponent } from './component/delete-popup/delete-popup.component';
-import { AutoEcoleDashboardComponent } from './component/autoecole-dashboard/autoecole-dashboard.component';
+
+import { PageAvisComponent } from './component/page-avis/page-avis.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { AutoEcoleDashboardComponent } from './component/autoecole-dashboard/aut
     LoginAutoecoleComponent,
     LoginEleveComponent,
     AdminDashboardComponent,
+    AutoEcoleDashboardComponent,
     EleveDashboardComponent,
     AddAvisComponent,
     AddEleveComponent,
@@ -65,8 +68,7 @@ import { AutoEcoleDashboardComponent } from './component/autoecole-dashboard/aut
     ReplaceCharPipe,
     LogoutComponent,
     DeletePopupComponent,
-    AutoEcoleDashboardComponent
-
+    PageAvisComponent
   ],
   imports: [
     BrowserModule,

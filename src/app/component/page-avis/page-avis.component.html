@@ -1,0 +1,16 @@
+<div class="container mt-4">
+    <!-- Titre de la page -->
+    <h2 class="text-center mb-4">Avis des utilisateurs</h2>
+  
+    <!-- Liste des cartes d'avis -->
+    <div class="d-flex flex-column align-items-center">
+      <!-- Boucle pour afficher chaque avis -->
+      <app-card
+        *ngFor="let avis of listeAvis"
+        [contenu]="avis.contenu ?? 'Aucun commentaire'"
+        [date]="avis.date_publication ?? getDefaultDate()"
+        class="mb-4"
+        style="width: 50%;"
+      ></app-card>
+    </div>
+  </div>
