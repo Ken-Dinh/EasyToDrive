@@ -58,6 +58,18 @@ npm install
     ng s
     ```
 
+## Compte à utilisé:
+Compte élève:
+Titouan.Kawden ; 123456789
+Liam.cheurfa ; 123456789
+
+Compte Auto-école:
+AutoEcoleLyonSud ; pass123
+EcoleConduiteNice ; pass123
+
+Compte Admin:
+menthe_et_cristaux ; admin
+
 ## MCD (Modèle Conceptuel de Données)
 ![image](./resources/EasyToDrive%20MCD.png)
 
