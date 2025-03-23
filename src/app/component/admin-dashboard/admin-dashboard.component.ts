@@ -106,7 +106,6 @@ export class AdminDashboardComponent implements OnInit {
     { key: 'simulation', label: 'Simulations' }
   ];
 
-  // Mapping pour les routes d'ajout
   routeMappingAdd: Record<TableKey, string> = {
     eleve: 'add-eleve',
     examen: 'add-examen',
@@ -114,7 +113,6 @@ export class AdminDashboardComponent implements OnInit {
     simulation: 'add-simulation'
   };
 
-  // Mapping pour les routes de modification
   routeMappingPut: Record<TableKey, string> = {
     eleve: 'put-eleve',
     examen: 'put-examen',
@@ -158,11 +156,6 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  onEdit(item: any) {
-    console.log('Élément à modifier :', item);
-    // Ajoutez ici la logique pour modifier l'élément
-  }
-
   onDelete(item: any) {
     const idField = this.idFieldMapping[this.selectedTable];
     const itemId = item[idField];
@@ -198,7 +191,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   showDeletePopup = false; 
-  itemToDelete: any; 
+  itemToDelete: any;
 
   openDeletePopup(item: any) {
     this.itemToDelete = item;
@@ -207,6 +200,7 @@ export class AdminDashboardComponent implements OnInit {
 
   onDeleteConfirmed() {
     this.onDelete(this.itemToDelete);
+    this.showDeletePopup = false; 
   }
   
   onDeleteCancelled() {
