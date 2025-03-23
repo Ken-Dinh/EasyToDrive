@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let key of getKeys(data[0])">{{ key | replace: "_" : " " | titlecase }}</th>
-      <th *ngIf="data.length > 0 && !disableActions">Actions</th> <!-- Masquer la colonne Actions si disableActions est true -->
+      <th *ngIf="data.length > 0 && !disableActions">Actions</th> <!-- Faire disparaitre dans le cas de l'avis-->
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,7 @@
       <td>
         <!-- Bouton Supprimer toujours visible -->
         <button class="btn btn-danger btn-sm me-2" (click)="deleteItem(item)">Supprimer</button>
-        <!-- Boutons Ajouter et Modifier masqués si disableActions est true -->
+        <!-- Boutons Ajouter et Modifier a faire disparait dans le cas de l'avis -->
         <ng-container *ngIf="!disableActions">
           <a [routerLink]="getPutRoute(item)" class="btn btn-primary btn-sm">Modifier</a>
         </ng-container>
