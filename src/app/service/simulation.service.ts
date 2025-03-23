@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Simulation } from '../model/simulation';
+import { apiUrl } from '../model/api-url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SimulationService {
 
-  private apiUrl = 'http://localhost/easytodrive/src/simulation.php';
+  private apiUrl = `${apiUrl}/src/simulation.php`;
 
   constructor(private http: HttpClient) { }
 

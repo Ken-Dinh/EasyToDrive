@@ -2,8 +2,6 @@ import { Router } from "@angular/router";
 import { AuthguardValidationService } from "../service/authguard-validation.service";
 import { AuthService } from "../service/auth.service";
 
-var token: any = localStorage.getItem("token");
-
 export function redirect(authguardValidationService: AuthguardValidationService, route: Router, authService: AuthService): void {
     const token = authService.getToken();
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AutoEcole } from '../model/auto-ecole';
+import { apiUrl } from '../model/api-url';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { AutoEcole } from '../model/auto-ecole';
 })
 export class LoginAutoecoleService {
 
-  private apiUrl = 'http://localhost/easytodrive/src/login-autoecole.php';
+  private apiUrl = `${apiUrl}/src/login-autoecole.php`;
 
   constructor(private http: HttpClient) { }
 

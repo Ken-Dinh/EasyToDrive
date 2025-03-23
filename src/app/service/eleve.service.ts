@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Eleve } from '../model/eleve';
+import { apiUrl } from '../model/api-url';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EleveService {
 
-  private apiUrl = 'http://localhost/easytodrive/src/eleve.php';
+  private apiUrl = `${apiUrl}/src/eleve.php`;
 
   constructor(private http: HttpClient) { }
 
