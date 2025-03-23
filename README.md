@@ -1,11 +1,15 @@
 # EasyToDrive
 
-Ce site servira à afficher les statistiques des éléves.
+EasyToDrive est une plateforme en ligne dédiée à la gestion et à l'affichage des résultats et statistiques des élèves d'une auto-école. Ce système permet aux responsables des auto-écoles de consulter les résultats des élèves sur divers examens, simulations, et tests, tout en assurant une gestion centralisée des informations liées aux élèves et à leur progression.
+
+Les moniteurs d'auto-école peuvent consulter les résultats des examens passés par les élèves, voir les tests qu'ils ont effectués et obtenir un aperçu de leurs performances. Ce projet est conçu pour améliorer l'efficacité de la gestion des données dans les auto-écoles et aider les élèves à suivre leurs performances en temps réel.
 
 ## Table des matières
 
 - [Dépendence](#dépendances)
 - [Installation](#installation)
+- [MCD](#mcd-modèle-conceptuel-de-données)
+- [MPD](#mpd-modèle-physique-de-données)
 
 ## Dépendances
 
@@ -16,36 +20,46 @@ Ce site servira à afficher les statistiques des éléves.
 
 ## Installation
 
-- Cloner le projet dans un dossier de développement:
+1. Cloner le projet dans un dossier de développement local :
 ```
 git clone https://github.com/Ken-Dinh/EasyToDrive.git
 ```
 
-- Assurez-vous d'être dans le dossier root du projet:
+2. Accédez au répertoire racine du projet :
 ```bash
 cd EasyToDrive
 ```
-- Installer les modules pour le projet:
+3. Installer les modules NPM nécessaires pour le projet Angular :
 ```bash
 npm install
 ```
 
-- Aller dans le dossier api/easytodrive et installer PHP JWT:
-```bash
-cd api/easytodrive
-composer require firebase/php-jwt
-```
+4. Installer les dépendances PHP pour l'API :
+- Allez dans le répertoire de l'API :
+    ```bash
+    cd api/easytodrive
+    ```
 
-- Déplacer le dossier api/easytodrive dans le dossier htdocs de XAMPP
-- Lancer le server Apache et MySQL avec le panneau de contrôle de XAMPP
+- Installez Firebase JWT pour la gestion des tokens :
+    ```bash
+    composer require firebase/php-jwt
+    ```
 
-- Lancer le site dans le dossier root EasyToDrive:
-```bash
-ng s
-```
+5. Déplacez le dossier api/easytodrive dans le dossier htdocs de XAMPP.
+6. Démarrez le serveur Apache et MySQL à partir du panneau de contrôle XAMPP pour faire tourner l'API.
 
-## MCD
+7. Lancer l'application Angular :
+- Retournez dans le répertoire racine du projet :
+    ```bash
+    cd ..
+    ```
+- Lancez l'application Angular avec la commande suivante :
+    ```bash
+    ng s
+    ```
+
+## MCD (Modèle Conceptuel de Données)
 ![image](./resources/EasyToDrive%20MCD.png)
 
-## MPD
+## MPD (Modèle Physique de Données)
 ![image](./resources/EasyToDrive%20MPD.png)
