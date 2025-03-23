@@ -4,7 +4,7 @@
     
     <div class="row">
       <div class="col-md-2 d-flex justify-content-center p-3">
-        <a [routerLink]="getAddRoute()" class="btn btn-warning">Ajouter</a>
+        <a *ngIf="selectedTable !== 'avis'" [routerLink]="getAddRoute()" class="btn btn-warning">Ajouter</a>
       </div>
       <div class="col-md-6 p-3">
         <div class="d-flex align-items-center bg-warning p-2 rounded">
@@ -24,6 +24,7 @@
             [data]="getSelectedTableData()"
             [selectedTable]="selectedTable"
             [getPutRoute]="getPutRoute.bind(this)"
+            [disableActions]="shouldDisableActions()"
             (delete)="openDeletePopup($event)">
           </app-table>
         </div>
