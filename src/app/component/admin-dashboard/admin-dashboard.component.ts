@@ -11,6 +11,7 @@ import { SimulationService } from '../../service/simulation.service';
 import { EleveService } from '../../service/eleve.service';
 import { TestService } from '../../service/test.service';
 import { ControllerService } from '../../service/delete_controller.service';
+import { AvisService } from '../../service/avis.service';
 
 type TableKey = 'eleve' | 'examen' | 'test' | 'simulation'| 'avis';
 
@@ -28,18 +29,7 @@ export class AdminDashboardComponent implements OnInit {
   listeSimulation: Simulation[] = [];
   listeEleve: Eleve[] = [];
   listeTest: Test[] = [];
-  listeAvis: Avis[] = [
-    {
-      avis_id: 1,
-      contenu: "Très bon service, je recommande !",
-      date_publication: "2023-10-01 08:20:50",
-    },
-    {
-      avis_id: 2,
-      contenu: "Formateurs très compétents et à l'écoute.",
-      date_publication: "2023-10-05 10:30:00",
-    },
-  ];
+  listeAvis: Avis[] = [];
 
   message: string = "";
   
@@ -48,6 +38,7 @@ export class AdminDashboardComponent implements OnInit {
     private simulationService: SimulationService,
     private eleveService: EleveService,
     private testService: TestService,
+    private avisService: AvisService,
     private controllerService: ControllerService) {}
 
   ngOnInit(): void {
@@ -55,6 +46,7 @@ export class AdminDashboardComponent implements OnInit {
     this.getSimulation();
     this.getEleve();
     this.getTest();
+    this.getAvis();
   }
 
   formatListDates<T>(list: T[], dateField: keyof T): T[] {
@@ -106,7 +98,9 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   getAvis() {
-
+    this.avisService.getAvis().subscribe((response: any) => {
+      this.listeAvis = this.formatListTimestamps(response.avis, "date_publication");
+    });
   }
   
   selectedTable: TableKey = 'eleve';
@@ -203,6 +197,9 @@ export class AdminDashboardComponent implements OnInit {
           break;
         case 'simulation':
           this.listeSimulation = this.listeSimulation.filter(simulation => simulation[idField as keyof Simulation] !== itemId);
+          break;
+        case 'avis':
+          this.listeAvis = this.listeAvis.filter(avis => avis[idField as keyof Avis] !== itemId);
           break;
       }
 

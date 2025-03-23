@@ -130,7 +130,37 @@
         if ($stmt->execute()) {
             echo json_encode(["message" => "Simulation supprimé avec succès"]);
         } else {
-            echo json_encode(["message" => "Erreur lors de la suppression da la simulation"]);
+            echo json_encode(["message" => "Erreur lors de la suppression de la simulation"]);
+        }
+    }
+
+    function deleteAvis($id) {
+        global $conn;
+
+        if (empty($id)) {
+            echo json_encode(["message" => "Missing data"]);
+            return;
+        }
+
+        $query = "SELECT * FROM avis WHERE avis_id = :avis_id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":avis_id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$result) {
+            echo json_encode(["message" => "L'avis n'existe pas"]);
+            return;
+        }
+
+        $query = "DELETE FROM avis WHERE avis_id = :avis_id;";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(":avis_id", $id, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            echo json_encode(["message" => "Avis supprimé avec succès"]);
+        } else {
+            echo json_encode(["message" => "Erreur lors de la suppression de l'avis"]);
         }
     }
 
@@ -149,8 +179,11 @@
         case "test":
             deleteTest($data["id"]);
             break;
-        case "simulation";
+        case "simulation":
             deleteSimulation($data["id"]);
+            break;
+        case "avis":
+            deleteAvis($data["id"]);
             break;
         default:
             echo json_encode(["message" => "Table invalide"]);
