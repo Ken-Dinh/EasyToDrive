@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Eleve } from '../../model/eleve';
 import { Examen } from '../../model/examen';
 import { Test } from '../../model/test';
 import { Simulation } from '../../model/simulation';
+import { EleveResultatService } from '../../service/eleve-resultat.service';
 
 @Component({
   selector: 'app-eleve-dashboard',
@@ -10,25 +11,24 @@ import { Simulation } from '../../model/simulation';
   templateUrl: './eleve-dashboard.component.html',
   styleUrl: './eleve-dashboard.component.css'
 })
-export class EleveDashboardComponent {
-  listeExamen: Examen[] = [{
-    examen_id: 99,
-    date: "2025-16-29", 
-    score: 17.5
-  }]
+export class EleveDashboardComponent implements OnInit {
+  token: any = localStorage.getItem("token");
+  listeExamen: Examen[] = []
+  listeTest: Test[] = []
+  listeSimulation: Simulation[] = []
 
-  listeTest: Test[] = [{
-    test_id: 13,
-    date: "2023-11-14", 
-    score: 12.5,
-    theme: "Signalisation"
-  }]
+  constructor(private eleveResultat: EleveResultatService) {}
 
-  listeSimulation: Simulation[] = [{
-    simulation_id: 402,
-    date: "2016-11-14", 
-    validation: true
-  }]
-  
+  ngOnInit(): void {
+      this.getResultat();
+  }
 
+  getResultat() {
+    this.eleveResultat.getEleveResult(this.token).subscribe((response: any) => {
+      this.listeExamen = response.examen;
+      this.listeTest = response.test;
+      this.listeSimulation = response.simulation;
+    });
+  }
 }
+
