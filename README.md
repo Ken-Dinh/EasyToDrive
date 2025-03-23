@@ -58,7 +58,7 @@ npm install
     ng s
     ```
 
-## Compte à utilisé:
+## Comptes à utiliser:
 Compte élève:
 Titouan.Kawden ; 123456789
 Liam.cheurfa ; 123456789
