@@ -12,7 +12,7 @@ import { EleveService } from '../../service/eleve.service';
 import { TestService } from '../../service/test.service';
 import { ControllerService } from '../../service/delete_controller.service';
 
-type TableKey = 'eleve' | 'examen' | 'test' | 'simulation';
+type TableKey = 'eleve' | 'examen' | 'test' | 'simulation'| 'avis';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -21,15 +21,26 @@ type TableKey = 'eleve' | 'examen' | 'test' | 'simulation';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+  shouldDisableActions(): boolean {
+    return this.selectedTable === 'avis'; 
+  }
   listeExamen: Examen[] = [];
   listeSimulation: Simulation[] = [];
   listeEleve: Eleve[] = [];
   listeTest: Test[] = [];
-  listeAvis: Avis[] = [{
-    avis_id: 111,
-    contenu: "Très bien pour voir simplement ses notes",
-    date_publication: this.formatTimestampFr("2025-03-12 08:20:50"),
-  }];
+  listeAvis: Avis[] = [
+    {
+      avis_id: 1,
+      contenu: "Très bon service, je recommande !",
+      date_publication: "2023-10-01 08:20:50",
+    },
+    {
+      avis_id: 2,
+      contenu: "Formateurs très compétents et à l'écoute.",
+      date_publication: "2023-10-05 10:30:00",
+    },
+  ];
+
   message: string = "";
   
   constructor(private router: Router,
@@ -103,29 +114,36 @@ export class AdminDashboardComponent implements OnInit {
     { key: 'eleve', label: 'Élèves' },
     { key: 'examen', label: 'Examens' },
     { key: 'test', label: 'Tests' },
-    { key: 'simulation', label: 'Simulations' }
+    { key: 'simulation', label: 'Simulations' },
+    { key: 'avis', label: 'Avis' }
   ];
 
   routeMappingAdd: Record<TableKey, string> = {
     eleve: 'add-eleve',
     examen: 'add-examen',
     test: 'add-test',
-    simulation: 'add-simulation'
+    simulation: 'add-simulation',
+    avis: 'add-avis'
+
   };
 
   routeMappingPut: Record<TableKey, string> = {
     eleve: 'put-eleve',
     examen: 'put-examen',
     test: 'put-test',
-    simulation: 'put-simulation'
+    simulation: 'put-simulation',
+    avis: 'put-avis'
   };
 
   idFieldMapping: Record<TableKey, string> = {
     eleve: 'eleve_id',
     examen: 'examen_id',
     test: 'test_id',
-    simulation: 'simulation_id'
+    simulation: 'simulation_id',
+    avis: 'avis_id'
   };
+
+  
 
   changeTable(event: Event) {
     const target = event.target as HTMLSelectElement;
@@ -151,6 +169,8 @@ export class AdminDashboardComponent implements OnInit {
         return this.listeTest;
       case 'simulation':
         return this.listeSimulation;
+      case 'avis': 
+        return this.listeAvis;
       default:
         return [];
     }
