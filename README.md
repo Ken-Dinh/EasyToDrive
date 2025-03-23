@@ -5,7 +5,7 @@ Ce site servira à afficher les statistiques des éléves.
 ## Table des matières
 
 - [Dépendence](#dépendances)
-- [Install](#install)
+- [Installation](#installation)
 
 ## Dépendances
 
