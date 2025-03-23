@@ -10,24 +10,19 @@ import { Eleve } from '../../model/eleve';
   styleUrls: ['./autoecole-dashboard.component.css'],
 })
 export class AutoEcoleDashboardComponent implements OnInit {
-  // Liste des élèves assignés à l'auto-école
   listeEleves: Eleve[] = [];
 
-  // Données de l'élève sélectionné
   selectedEleveExamens: Examen[] = [];
   selectedEleveSimulations: Simulation[] = [];
   selectedEleveTests: Test[] = [];
 
-  // ID de l'élève sélectionné
   selectedEleveId: number | null = null;
 
-  // Maps pour lier les résultats aux élèves
   eleveExamensMap: Map<number, Examen[]> = new Map();
   eleveSimulationsMap: Map<number, Simulation[]> = new Map();
   eleveTestsMap: Map<number, Test[]> = new Map();
 
   ngOnInit(): void {
-    // Initialiser les données placeholder
     this.listeEleves = [
       {
         eleve_id: 29,
@@ -92,7 +87,6 @@ export class AutoEcoleDashboardComponent implements OnInit {
     const eleveId = +event.target.value; 
     this.selectedEleveId = eleveId;
 
-    
     this.selectedEleveExamens = this.eleveExamensMap.get(eleveId) || [];
     this.selectedEleveSimulations = this.eleveSimulationsMap.get(eleveId) || [];
     this.selectedEleveTests = this.eleveTestsMap.get(eleveId) || [];
