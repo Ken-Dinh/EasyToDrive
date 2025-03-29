@@ -4,12 +4,13 @@ EasyToDrive est une plateforme en ligne dédiée à la gestion et à l'affichage
 
 Les moniteurs d'auto-école peuvent consulter les résultats des examens passés par les élèves, voir les tests qu'ils ont effectués et obtenir un aperçu de leurs performances. Ce projet est conçu pour améliorer l'efficacité de la gestion des données dans les auto-écoles et aider les élèves à suivre leurs performances en temps réel.
 ## [Lien Figma](https://www.figma.com/design/91s6pGyuDzWGonWTL4Mm9U/EasyToDrive-Prototype?node-id=151-472&t=ge82BfqJ4LLHHihB-1)
-## Site Web : http://easytodrive.ddnsfree.com
+## Site Web : https://easytodrive.free.nf
 
 ## Table des matières
 
 - [Dépendence](#dépendances)
 - [Installation](#installation)
+- [Comptes](#comptes-à-utiliser)
 - [MCD](#mcd-modèle-conceptuel-de-données)
 - [MPD](#mpd-modèle-physique-de-données)
 
@@ -62,16 +63,16 @@ npm install
     ```
 
 ## Comptes à utiliser:
-Compte élève:
-Titouan.Kawden ; 123456789
-Liam.cheurfa ; 123456789
+- Compte élève:
+  - Titouan.Kawden ; 123456789
+  - Liam.cheurfa ; 123456789
 
-Compte Auto-école:
-AutoEcoleLyonSud ; pass123
-EcoleConduiteNice ; pass123
+- Compte Auto-école:
+  - AutoEcoleLyonSud ; pass123
+  - EcoleConduiteNice ; pass123
 
-Compte Admin:
-menthe_et_cristaux ; admin
+- Compte Admin:
+  - menthe_et_cristaux ; admin
 
 ## MCD (Modèle Conceptuel de Données)
 ![image](./resources/EasyToDrive%20MCD.png)
